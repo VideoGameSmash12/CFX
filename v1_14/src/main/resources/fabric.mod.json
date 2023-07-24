@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "cfx-v1_14",
+  "version": "${version}",
+  "name": "Patches for 1.14.4+ exploits",
+  "description": "CFX patches for exploits starting at 1.14.4.",
+  "authors": [
+    "videogamesm12"
+  ],
+  "contact": {
+    "repo": "https://github.com/VideoGameSmash12/CFX"
+  },
+  "license": "MIT",
+  "icon": "assets/cfx/icon.png",
+  "environment": "client",
+  "mixins": [
+    "cfx.v1_14.mixins.json"
+  ],
+  "custom": {
+    "modmenu": {
+      "parent": "cfx"
+    }
+  }
+}

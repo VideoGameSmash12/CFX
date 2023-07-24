@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "cfx",
+  "version": "${version}",
+  "name": "CFX",
+  "description": "A mod that patches client crashing exploits",
+  "authors": [
+    "videogamesm12",
+    "Alco_Rs11"
+  ],
+  "contact": {
+    "repo": "https://github.com/VideoGameSmash12/CFX"
+  },
+  "license": "MIT",
+  "icon": "assets/cfx/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "me.videogamesm12.cfx.CFX"
+    ]
+  },
+  "depends": {
+    "fabric": "*"
+  }
+}
