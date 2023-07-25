@@ -70,6 +70,8 @@ public class CFXConfig
 
     private BlockEntities blockEntityPatches = new BlockEntities();
 
+    private Blocks blockPatches = new Blocks();
+
     private NBT nbtPatches = new NBT();
 
     private Network networkPatches = new Network();
@@ -88,6 +90,13 @@ public class CFXConfig
         {
             CFX.getLogger().error("Failed to save configuration");
         }
+    }
+
+    @Getter
+    @Setter
+    public static class Blocks
+    {
+        private boolean upsideDownPortalPatchEnabled = true;
     }
 
     @Getter

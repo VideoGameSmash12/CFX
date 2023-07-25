@@ -53,8 +53,6 @@ public class PatchManager implements IMixinConfigPlugin
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName)
     {
-        System.out.println(mixinClassName);
-
         try
         {
             // Get the patch
@@ -80,7 +78,6 @@ public class PatchManager implements IMixinConfigPlugin
             // Make sure the patch is supported
             if (!VersionChecker.isCompatibleWithCurrentVersion(metadata))
             {
-                CFX.getLogger().warn("Ignoring patch " + mixinClassName + " as it does not support this version of Minecraft");
                 return false;
             }
         }
@@ -117,6 +114,6 @@ public class PatchManager implements IMixinConfigPlugin
     @Override
     public void postApply(String targetClassName, ClassNode targetClass, String mixinClassName, IMixinInfo mixinInfo)
     {
-
+        CFX.getLogger().info("Applied patch " + mixinClassName + "...");
     }
 }

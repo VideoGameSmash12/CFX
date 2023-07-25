@@ -18,8 +18,5 @@
     "client": [
       "me.videogamesm12.cfx.CFX"
     ]
-  },
-  "depends": {
-    "fabric": "*"
   }
 }

@@ -10,6 +10,7 @@
   "client": [
   ],
   "mixins": [
+    "BlockPatches$UpsideDownPortals",
     "ComponentPatches$BoundlessTranslation"
   ]
 }
