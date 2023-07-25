@@ -114,6 +114,6 @@ public class PatchManager implements IMixinConfigPlugin
     @Override
     public void postApply(String targetClassName, ClassNode targetClass, String mixinClassName, IMixinInfo mixinInfo)
     {
-        CFX.getLogger().info("Applied patch " + mixinClassName + "...");
+        CFX.getLogger().info("Applied patch " + mixinClassName + ".");
     }
 }
