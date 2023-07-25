@@ -8,6 +8,6 @@
     "defaultRequire": 1
   },
   "client": [
-    "RendererPatches$EntityPatches$ExcessivelyLongText",
+    "RendererPatches$EntityPatches$ExcessiveEntityNames"
   ]
 }

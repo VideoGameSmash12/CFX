@@ -9,11 +9,11 @@
   },
   "client": [
     "NetworkPatches$ClientBoundPatches$ExcessiveParticles",
-    "RendererPatches$EntityPatches$ExcessivelyLongText",
+    "RendererPatches$EntityPatches$ExcessiveEntityNames",
     "RendererPatches$HudPatches$ExcessiveHearts"
   ],
   "mixins": [
     "ComponentPatches$BoundlessTranslation",
-    "NbtPatches$NBTSizeLimit"
+    "NbtPatches$NBTSize"
   ]
 }

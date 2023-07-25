@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class ComponentPatches
 {
     @Mixin(TranslatableText.class)
-    @PatchMeta(minVersion = 751, maxVersion = 759) // 1.16.2 to 1.18.2
+    @PatchMeta(minVersion = 751, maxVersion = 757) // 1.16.2 to 1.18.1
     public static class BoundlessTranslation
     {
         @Shadow @Final private static StringVisitable NULL_ARGUMENT;

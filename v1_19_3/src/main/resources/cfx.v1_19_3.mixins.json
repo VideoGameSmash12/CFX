@@ -10,6 +10,6 @@
   "client": [
   ],
   "mixins": [
-    "NbtPatches$NBTSizeLimit"
+    "NbtPatches$NBTSize"
   ]
 }

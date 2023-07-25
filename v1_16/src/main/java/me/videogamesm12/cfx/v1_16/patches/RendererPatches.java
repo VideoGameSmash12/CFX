@@ -4,6 +4,7 @@ import me.videogamesm12.cfx.CFX;
 import me.videogamesm12.cfx.management.PatchMeta;
 import net.minecraft.client.render.entity.EntityRenderer;
 import net.minecraft.text.LiteralText;
+import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -15,7 +16,7 @@ public class RendererPatches
     {
         @Mixin(EntityRenderer.class)
         @PatchMeta(minVersion = 735, maxVersion = 758) // 1.16 to 1.18.2
-        public static class ExcessivelyLongText
+        public static class ExcessiveEntityNames
         {
             @ModifyVariable(method = "renderLabelIfPresent", at = @At(value = "HEAD"), argsOnly = true)
             private Text limitLabelSize(Text text)

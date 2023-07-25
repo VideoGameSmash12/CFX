@@ -12,7 +12,7 @@ public class NbtPatches
 {
     @Mixin(NbtTagSizeTracker.class)
     @PatchMeta(minVersion = 761, maxVersion = 999, conflictingMods = "deviousmod") // 1.19.3 to 1.20.1
-    public static class NBTSizeLimit
+    public static class NBTSize
     {
         @Inject(method = "add", at = @At(value = "INVOKE", target = "Ljava/lang/RuntimeException;<init>(Ljava/lang/String;)V", shift = At.Shift.BEFORE), cancellable = true)
         public void disableNbtSizeRestrictions(long bits, CallbackInfo ci)

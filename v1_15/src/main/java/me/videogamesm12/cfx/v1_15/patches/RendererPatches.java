@@ -13,7 +13,7 @@ public class RendererPatches
     {
         @Mixin(EntityRenderer.class)
         @PatchMeta(minVersion = 573, maxVersion = 578) // 1.15 to 1.15.2
-        public static class ExcessivelyLongText
+        public static class ExcessiveEntityNames
         {
             @ModifyVariable(method = "renderLabelIfPresent", at = @At(value = "HEAD"), argsOnly = true)
             private String limitLabelSize(String text)

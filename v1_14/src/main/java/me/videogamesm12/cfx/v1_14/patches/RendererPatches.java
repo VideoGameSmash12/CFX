@@ -36,7 +36,7 @@ public class RendererPatches
     {
         @Mixin(EntityRenderer.class)
         @PatchMeta(minVersion = 498, maxVersion = 498) // 1.14.4 only
-        public static class ExcessivelyLongText
+        public static class ExcessiveEntityNames
         {
             @ModifyVariable(method = "renderLabel(Lnet/minecraft/entity/Entity;Ljava/lang/String;DDDI)V", at = @At(value = "HEAD"), argsOnly = true)
             private String limitLabelSize(String text)
