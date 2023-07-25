@@ -15,7 +15,7 @@
   "icon": "assets/cfx/icon.png",
   "environment": "client",
   "entrypoints": {
-    "client": [
+    "main": [
       "me.videogamesm12.cfx.CFX"
     ]
   }
