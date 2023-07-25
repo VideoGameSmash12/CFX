@@ -11,4 +11,7 @@ pluginManagement {
 include 'v1_14'
 include 'v1_15'
 include 'v1_16'
+include 'v1_16_2'
+include 'v1_19_1'
+include 'v1_19_3'
 include 'v1_20'

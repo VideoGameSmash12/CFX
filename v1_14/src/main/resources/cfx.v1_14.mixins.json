@@ -13,6 +13,7 @@
     "RendererPatches$HudPatches$ExcessiveHearts"
   ],
   "mixins": [
+    "ComponentPatches$BoundlessTranslation",
     "NbtPatches$NBTSizeLimit"
   ]
 }

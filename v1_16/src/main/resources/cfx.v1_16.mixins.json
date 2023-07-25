@@ -9,5 +9,8 @@
   },
   "client": [
     "RendererPatches$EntityPatches$ExcessivelyLongText"
+  ],
+  "mixins": [
+    "ComponentPatches$BoundlessTranslation"
   ]
 }

@@ -1,0 +1,4 @@
+dependencies {
+    minecraft "com.mojang:minecraft:1.19.1"
+    mappings "net.fabricmc:yarn:1.19.1+build.6:v2"
+}

@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "id": "cfx-v1_16",
+  "id": "cfx-v1_16_2",
   "version": "${version}",
-  "name": "Patches for 1.16+ exploits",
-  "description": "CFX patches for exploits starting at 1.16.",
+  "name": "Patches for 1.16.2+ exploits",
+  "description": "CFX patches for exploits starting at 1.16.2.",
   "authors": [
     "videogamesm12"
   ],
@@ -14,10 +14,10 @@
   "icon": "assets/cfx/icon.png",
   "environment": "client",
   "mixins": [
-    "cfx.v1_16.mixins.json"
+    "cfx.v1_16_2.mixins.json"
   ],
   "depends": {
-    "minecraft": ">=1.16"
+    "minecraft": ">=1.16.2"
   },
   "custom": {
     "modmenu": {

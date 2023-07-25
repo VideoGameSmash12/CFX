@@ -16,6 +16,9 @@
   "mixins": [
     "cfx.v1_15.mixins.json"
   ],
+  "depends": {
+    "minecraft": ">=1.15"
+  },
   "custom": {
     "modmenu": {
       "parent": "cfx"

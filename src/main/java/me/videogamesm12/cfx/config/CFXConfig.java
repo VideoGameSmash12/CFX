@@ -76,6 +76,8 @@ public class CFXConfig
 
     private Render renderPatches = new Render();
 
+    private Text textPatches = new Text();
+
     public void save()
     {
         try (BufferedWriter writer = Files.newBufferedWriter(file.toPath()))
@@ -140,6 +142,19 @@ public class CFXConfig
             private boolean nameLengthLimitEnabled = true;
 
             private int nameLengthLimit = 255;
+        }
+    }
+
+    @Getter
+    public static class Text
+    {
+        private TranslatableComponent translation = new TranslatableComponent();
+
+        @Getter
+        @Setter
+        public static class TranslatableComponent
+        {
+            private boolean boundaryPatchEnabled = true;
         }
     }
 }
