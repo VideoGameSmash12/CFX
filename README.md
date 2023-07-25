@@ -4,6 +4,10 @@ CFX is a Fabric mod for Minecraft 1.14.4 to 1.20.1 that patches hazardous exploi
 ## Patch Coverage
 | Version | BadHoverIdentifier | BadHoverUUID | BoundlessTranslation | ClickableCommands | ExcessiveEntityNames | ExcessiveHearts | ExcessiveParticles | ExtraNestedArrays | NBTSize       | OutrageousTranslation |
 |---------|--------------------|--------------|----------------------|-------------------|----------------------|-----------------|--------------------|-------------------|---------------|-----------------------|
+| 1.14    | Not yet            | Not yet      | Yes (v1_14)          | Not yet           | Yes (v1_14)          | Yes (v1_14)     | Yes (v1_14)        | Not yet           | Yes (v1_14)   | Not yet               |
+| 1.14.1  | Not yet            | Not yet      | Yes (v1_14)          | Not yet           | Yes (v1_14)          | Yes (v1_14)     | Yes (v1_14)        | Not yet           | Yes (v1_14)   | Not yet               |
+| 1.14.2  | Not yet            | Not yet      | Yes (v1_14)          | Not yet           | Yes (v1_14)          | Yes (v1_14)     | Yes (v1_14)        | Not yet           | Yes (v1_14)   | Not yet               |
+| 1.14.3  | Not yet            | Not yet      | Yes (v1_14)          | Not yet           | Yes (v1_14)          | Yes (v1_14)     | Yes (v1_14)        | Not yet           | Yes (v1_14)   | Not yet               |
 | 1.14.4  | Not yet            | Not yet      | Yes (v1_14)          | Not yet           | Yes (v1_14)          | Yes (v1_14)     | Yes (v1_14)        | Not yet           | Yes (v1_14)   | Not yet               |
 | 1.15    | Not yet            | Not yet      | Yes (v1_14)          | Not yet           | Yes (v1_15)          | Yes (v1_14)     | Yes (v1_14)        | Not yet           | Yes (v1_14)   | Not yet               |
 | 1.15.1  | Not yet            | Not yet      | Yes (v1_14)          | Not yet           | Yes (v1_15)          | Yes (v1_14)     | Yes (v1_14)        | Not yet           | Yes (v1_14)   | Not yet               |

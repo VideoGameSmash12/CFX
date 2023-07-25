@@ -35,7 +35,7 @@ public class RendererPatches
     public static class EntityPatches
     {
         @Mixin(EntityRenderer.class)
-        @PatchMeta(minVersion = 498, maxVersion = 498) // 1.14.4 only
+        @PatchMeta(minVersion = 477, maxVersion = 498) // 1.14.4 only
         public static class ExcessiveEntityNames
         {
             @ModifyVariable(method = "renderLabel(Lnet/minecraft/entity/Entity;Ljava/lang/String;DDDI)V", at = @At(value = "HEAD"), argsOnly = true)
@@ -55,7 +55,7 @@ public class RendererPatches
     public static class HudPatches
     {
         @Mixin(value = InGameHud.class)
-        @PatchMeta(minVersion = 498, maxVersion = 578) // 1.14.4 to 1.15.2
+        @PatchMeta(minVersion = 477, maxVersion = 578) // 1.14.4 to 1.15.2
         public static class ExcessiveHearts
         {
             @ModifyVariable(method = "renderStatusBars", at = @At("STORE"), ordinal = 6)

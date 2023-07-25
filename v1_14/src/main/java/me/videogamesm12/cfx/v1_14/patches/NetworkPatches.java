@@ -36,7 +36,7 @@ public class NetworkPatches
     public static class ClientBoundPatches
     {
         @Mixin(ClientPlayNetworkHandler.class)
-        @PatchMeta(minVersion = 498, maxVersion = 9999) // 1.14.4 to Latest
+        @PatchMeta(minVersion = 477, maxVersion = 9999) // 1.14.4 to Latest
         public static class ExcessiveParticles
         {
             /**
