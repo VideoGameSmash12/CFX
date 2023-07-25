@@ -90,6 +90,7 @@ public class PatchManager implements IMixinConfigPlugin
         {
         }
 
+        CFX.getLogger().info("Applied patch " + mixinClassName + ".");
         return true;
     }
 
@@ -108,12 +109,10 @@ public class PatchManager implements IMixinConfigPlugin
     @Override
     public void preApply(String targetClassName, ClassNode targetClass, String mixinClassName, IMixinInfo mixinInfo)
     {
-
     }
 
     @Override
     public void postApply(String targetClassName, ClassNode targetClass, String mixinClassName, IMixinInfo mixinInfo)
     {
-        CFX.getLogger().info("Applied patch " + mixinClassName + ".");
     }
 }

@@ -41,6 +41,8 @@ public class CFXConfig
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
     private static final File file = new File(FabricLoader.getInstance().getConfigDir().toFile(), "cfx.json");
 
+    private static final int latestVersion = 1;
+
     public static CFXConfig load()
     {
         CFXConfig instance;
@@ -50,6 +52,14 @@ public class CFXConfig
             try
             {
                 instance = gson.fromJson(Files.newBufferedReader(file.toPath()), CFXConfig.class);
+
+                // Updates the configuration if the current version is newer than the configuration's version
+                if (instance.getVersion() < latestVersion)
+                {
+                    instance.setVersion(latestVersion);
+                    instance.save();
+                }
+
                 return instance;
             }
             catch (IOException ex)
@@ -67,6 +77,9 @@ public class CFXConfig
 
         return instance;
     }
+
+    @Setter
+    private int version = latestVersion;
 
     private BlockEntities blockEntityPatches = new BlockEntities();
 
