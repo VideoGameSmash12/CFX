@@ -22,13 +22,20 @@ import java.util.regex.Pattern;
 
 public class ComponentPatches
 {
+    /**
+     * Fixes an exploit caused by a design flaw in the translatable component's placeholder system
+     */
     @Mixin(Text.Serializer.class)
     @PatchMeta(minVersion = 755, maxVersion = 758) // 1.17 to 1.18.2
     public static class OutrageousTranslation
     {
         private static final Pattern PLACEHOLDER_PATTERN = Pattern.compile("%[0-9]{1,}\\$s");
 
-        @Inject(method = "deserialize(Lcom/google/gson/JsonElement;Ljava/lang/reflect/Type;Lcom/google/gson/JsonDeserializationContext;)Lnet/minecraft/text/MutableText;", at = @At(value = "INVOKE", target = "Lcom/google/gson/JsonElement;getAsJsonObject()Lcom/google/gson/JsonObject;", shift = At.Shift.AFTER), cancellable = true)
+        @Inject(method = "deserialize(Lcom/google/gson/JsonElement;Ljava/lang/reflect/Type;Lcom/google/gson/JsonDeserializationContext;)Lnet/minecraft/text/MutableText;",
+                at = @At(value = "INVOKE",
+                        target = "Lcom/google/gson/JsonElement;getAsJsonObject()Lcom/google/gson/JsonObject;",
+                        shift = At.Shift.AFTER),
+                cancellable = true)
         public void fixMajorExploit(JsonElement json, Type type, JsonDeserializationContext context, CallbackInfoReturnable<Object> cir)
         {
             if (CFX.getConfig().getTextPatches().getTranslation().isPlaceholderLimitEnabled()

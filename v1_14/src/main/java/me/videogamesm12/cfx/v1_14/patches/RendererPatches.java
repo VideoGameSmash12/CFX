@@ -38,7 +38,9 @@ public class RendererPatches
         @PatchMeta(minVersion = 477, maxVersion = 498) // 1.14.4 only
         public static class ExcessiveEntityNames
         {
-            @ModifyVariable(method = "renderLabel(Lnet/minecraft/entity/Entity;Ljava/lang/String;DDDI)V", at = @At(value = "HEAD"), argsOnly = true)
+            @ModifyVariable(method = "renderLabel(Lnet/minecraft/entity/Entity;Ljava/lang/String;DDDI)V",
+                    at = @At(value = "HEAD"),
+                    argsOnly = true)
             private String limitLabelSize(String text)
             {
                 if (CFX.getConfig().getRenderPatches().getEntity().isNameLengthLimitEnabled()
@@ -58,7 +60,9 @@ public class RendererPatches
         @PatchMeta(minVersion = 477, maxVersion = 578) // 1.14.4 to 1.15.2
         public static class ExcessiveHearts
         {
-            @ModifyVariable(method = "renderStatusBars", at = @At("STORE"), ordinal = 6)
+            @ModifyVariable(method = "renderStatusBars",
+                    at = @At("STORE"),
+                    ordinal = 6)
             public int injectRenderStatusBars(int hearts)
             {
                 if (!CFX.getConfig().getRenderPatches().getHud().isHeartCountLimitEnabled())

@@ -15,7 +15,9 @@ public class RendererPatches
         @PatchMeta(minVersion = 573, maxVersion = 578) // 1.15 to 1.15.2
         public static class ExcessiveEntityNames
         {
-            @ModifyVariable(method = "renderLabelIfPresent", at = @At(value = "HEAD"), argsOnly = true)
+            @ModifyVariable(method = "renderLabelIfPresent",
+                    at = @At(value = "HEAD"),
+                    argsOnly = true)
             private String limitLabelSize(String text)
             {
                 if (CFX.getConfig().getRenderPatches().getEntity().isNameLengthLimitEnabled()

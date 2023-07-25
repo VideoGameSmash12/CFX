@@ -13,13 +13,18 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 public class ComponentPatches
 {
+    /**
+     * Fixes an exploit caused by an oversight in the translatable component's placeholder system
+     */
     @Mixin(TranslatableText.class)
     @PatchMeta(minVersion = 751, maxVersion = 757) // 1.16.2 to 1.18.1
     public static class BoundlessTranslation
     {
         @Shadow @Final private static StringVisitable NULL_ARGUMENT;
 
-        @Inject(method = "getArg", at = @At("HEAD"), cancellable = true)
+        @Inject(method = "getArg",
+                at = @At("HEAD"),
+                cancellable = true)
         public void fixCrashExploit(int index, CallbackInfoReturnable<StringVisitable> cir)
         {
             if (CFX.getConfig().getTextPatches().getTranslation().isBoundaryPatchEnabled() && index < 0)

@@ -6,7 +6,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import me.videogamesm12.cfx.CFX;
 import me.videogamesm12.cfx.management.PatchMeta;
-import net.minecraft.text.MutableText;
 import net.minecraft.text.StringVisitable;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableTextContent;
@@ -25,6 +24,9 @@ import java.util.regex.Pattern;
 
 public class ComponentPatches
 {
+    /**
+     * Fixes an exploit caused by an oversight in the translatable component's placeholder system
+     */
     @Mixin(TranslatableTextContent.class)
     @PatchMeta(minVersion = 759, maxVersion = 760) // 1.19.1 to 1.19.2
     public static class BoundlessTranslation
@@ -33,7 +35,9 @@ public class ComponentPatches
         @Final
         private static StringVisitable NULL_ARGUMENT;
 
-        @Inject(method = "getArg", at = @At("HEAD"), cancellable = true)
+        @Inject(method = "getArg",
+                at = @At("HEAD"),
+                cancellable = true)
         public void fixCrashExploit(int index, CallbackInfoReturnable<StringVisitable> cir)
         {
             if (CFX.getConfig().getTextPatches().getTranslation().isBoundaryPatchEnabled() && index < 0)
@@ -43,13 +47,20 @@ public class ComponentPatches
         }
     }
 
+    /**
+     * Fixes an exploit caused by a design flaw in the translatable component's placeholder system
+     */
     @Mixin(Text.Serializer.class)
     @PatchMeta(minVersion = 759, maxVersion = 999) // 1.19 to Latest
     public static class OutrageousTranslation
     {
         private static final Pattern PLACEHOLDER_PATTERN = Pattern.compile("%[0-9]{1,}\\$s");
 
-        @Inject(method = "deserialize(Lcom/google/gson/JsonElement;Ljava/lang/reflect/Type;Lcom/google/gson/JsonDeserializationContext;)Lnet/minecraft/text/MutableText;", at = @At(value = "INVOKE", target = "Lcom/google/gson/JsonElement;getAsJsonObject()Lcom/google/gson/JsonObject;", shift = At.Shift.AFTER), cancellable = true)
+        @Inject(method = "deserialize(Lcom/google/gson/JsonElement;Ljava/lang/reflect/Type;Lcom/google/gson/JsonDeserializationContext;)Lnet/minecraft/text/MutableText;",
+                at = @At(value = "INVOKE",
+                        target = "Lcom/google/gson/JsonElement;getAsJsonObject()Lcom/google/gson/JsonObject;",
+                        shift = At.Shift.AFTER),
+                cancellable = true)
         public void fixMajorExploit(JsonElement json, Type type, JsonDeserializationContext context, CallbackInfoReturnable<Object> cir)
         {
             if (CFX.getConfig().getTextPatches().getTranslation().isPlaceholderLimitEnabled()

@@ -41,7 +41,7 @@ public class CFXConfig
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
     private static final File file = new File(FabricLoader.getInstance().getConfigDir().toFile(), "cfx.json");
 
-    private static final int latestVersion = 1;
+    private static final int latestVersion = 2;
 
     public static CFXConfig load()
     {
@@ -170,6 +170,8 @@ public class CFXConfig
     @Getter
     public static class Text
     {
+        private HoverEventComponent hoverEvent = new HoverEventComponent();
+
         private TranslatableComponent translation = new TranslatableComponent();
 
         @Getter
@@ -181,6 +183,15 @@ public class CFXConfig
             private boolean placeholderLimitEnabled = true;
 
             private int placeholderLimit = 16;
+        }
+
+        @Getter
+        @Setter
+        public static class HoverEventComponent
+        {
+            private boolean identifierPatchEnabled = true;
+
+            private boolean uuidPatchEnabled = true;
         }
     }
 }

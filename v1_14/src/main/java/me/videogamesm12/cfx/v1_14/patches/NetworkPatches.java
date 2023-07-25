@@ -40,11 +40,11 @@ public class NetworkPatches
         public static class ExcessiveParticles
         {
             /**
-             * Fixes an exploit caused by particle packets with extreme counts.
-             * @param packet    ParticleS2CPacket
-             * @param ci        CallbackInfo
+             * Fixes an exploit caused by particle packets with extreme counts
              */
-            @Inject(method = "onParticle", at = @At("HEAD"), cancellable = true)
+            @Inject(method = "onParticle",
+                    at = @At("HEAD"),
+                    cancellable = true)
             public void rejectTooManyParticles(ParticleS2CPacket packet, CallbackInfo ci)
             {
                 if (CFX.getConfig().getNetworkPatches().getClientBound().isParticleLimitEnabled()

@@ -12,6 +12,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 public class ComponentPatches
 {
+    /**
+     * Fixes an exploit caused by an oversight in the translatable component's placeholder system
+     */
     @Mixin(TranslatableText.class)
     @PatchMeta(minVersion = 477, maxVersion = 578) // 1.14.4 to 1.15.2
     public static class BoundlessTranslation
