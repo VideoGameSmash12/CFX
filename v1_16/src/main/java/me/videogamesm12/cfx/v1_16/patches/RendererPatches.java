@@ -4,7 +4,6 @@ import me.videogamesm12.cfx.CFX;
 import me.videogamesm12.cfx.management.PatchMeta;
 import net.minecraft.client.render.entity.EntityRenderer;
 import net.minecraft.text.LiteralText;
-import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

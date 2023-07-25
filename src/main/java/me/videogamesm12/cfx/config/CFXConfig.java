@@ -155,6 +155,10 @@ public class CFXConfig
         public static class TranslatableComponent
         {
             private boolean boundaryPatchEnabled = true;
+
+            private boolean placeholderLimitEnabled = true;
+
+            private int placeholderLimit = 16;
         }
     }
 }

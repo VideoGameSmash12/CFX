@@ -32,8 +32,17 @@ allprojects {
     apply plugin: 'fabric-loom'
     apply plugin: 'maven-publish'
 
+    ext {
+        post_seventeen = false
+    }
+
     tasks.withType(JavaCompile).configureEach {
-        it.options.release.set(8)
+        if (post_seventeen) {
+            it.options.release.set(16)
+        }
+        else {
+            it.options.release.set(8)
+        }
     }
 
     repositories {

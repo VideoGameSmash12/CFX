@@ -1,13 +1,15 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "me.videogamesm12.cfx.v1_19_1.patches",
+  "package": "me.videogamesm12.cfx.v1_17.patches",
   "plugin": "me.videogamesm12.cfx.management.PatchManager",
-  "compatibilityLevel": "JAVA_8",
+  "compatibilityLevel": "JAVA_16",
   "injectors": {
     "defaultRequire": 1
   },
+  "client": [
+  ],
   "mixins": [
-    "ComponentPatches$BoundlessTranslation"
+    "ComponentPatches$OutrageousTranslation"
   ]
 }

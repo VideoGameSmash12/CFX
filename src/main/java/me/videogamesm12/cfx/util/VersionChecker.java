@@ -62,6 +62,11 @@ public class VersionChecker
         return meta.minVersion() <= gameMetadata.getProtocolVersion()
                 && meta.maxVersion() >= gameMetadata.getProtocolVersion();
     }
+    
+    public static int getProtocolVersion()
+    {
+        return gameMetadata.getProtocolVersion();
+    }
 
     private static class VersionMetadata
     {

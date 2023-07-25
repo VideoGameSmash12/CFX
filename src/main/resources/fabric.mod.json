@@ -3,7 +3,7 @@
   "id": "cfx",
   "version": "${version}",
   "name": "CFX",
-  "description": "A mod that patches client crashing exploits",
+  "description": "A mod that patches hazardous exploits",
   "authors": [
     "videogamesm12",
     "Alco_Rs11"
