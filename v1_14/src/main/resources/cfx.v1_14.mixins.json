@@ -13,7 +13,10 @@
     "RendererPatches$HudPatches$ExcessiveHearts"
   ],
   "mixins": [
+    "BlockEntityPatches$BadBlockEntityName",
     "ComponentPatches$BoundlessTranslation",
+    "ComponentPatches$ExtraEmptyArray",
+    "EntityPatches$BadEntityName",
     "NbtPatches$NBTSize"
   ]
 }
