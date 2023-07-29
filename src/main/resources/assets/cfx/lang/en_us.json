@@ -1,3 +1,4 @@
 {
+  "cfx.prompt.run_command": "Are you sure you want to run this command?",
   "cfx.replacement.too_many_placeholders": "*** Component has too many placeholders ***"
 }

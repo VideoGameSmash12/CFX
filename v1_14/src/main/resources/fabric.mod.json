@@ -14,7 +14,8 @@
   "icon": "assets/cfx/icon.png",
   "environment": "client",
   "mixins": [
-    "cfx.v1_14.mixins.json"
+    "cfx.v1_14.mixins.json",
+    "cfx.v1_14.sensitive.mixins.json"
   ],
   "custom": {
     "modmenu": {
