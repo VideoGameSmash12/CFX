@@ -85,6 +85,8 @@ public class CFXConfig
 
     private Blocks blockPatches = new Blocks();
 
+    private Entities entityPatches = new Entities();
+
     private NBT nbtPatches = new NBT();
 
     private Network networkPatches = new Network();
@@ -117,6 +119,15 @@ public class CFXConfig
     public static class BlockEntities
     {
         private boolean potSherdValidationEnabled = true;
+
+        private boolean customNameValidationEnabled = true;
+    }
+
+    @Getter
+    @Setter
+    public static class Entities
+    {
+        private boolean customNameValidationEnabled = true;
     }
 
     @Getter
@@ -170,9 +181,18 @@ public class CFXConfig
     @Getter
     public static class Text
     {
+        private ExtraComponent extra = new ExtraComponent();
+
         private HoverEventComponent hoverEvent = new HoverEventComponent();
 
         private TranslatableComponent translation = new TranslatableComponent();
+
+        @Getter
+        @Setter
+        public static class ExtraComponent
+        {
+            private boolean emptyArrayPatchEnabled = true;
+        }
 
         @Getter
         @Setter

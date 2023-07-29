@@ -6,6 +6,8 @@ This table details what patches have yet to be back-ported from both WNT's CFX a
 
 | Exploit                   | 1.14.x  | 1.15.x  | 1.16.x                                           | 1.17.x  | 1.18.x  | 1.19.x                                           | 1.20.x                | 
 |---------------------------|---------|---------|--------------------------------------------------|---------|---------|--------------------------------------------------|-----------------------|
+| **BadBlockEntityName**    | Not yet | Not yet | Not yet                                          | Not yet | Not yet | Not yet                                          | Not yet               |
+| **BadEntityName**         | Not yet | Not yet | Not yet                                          | Not yet | Not yet | Not yet                                          | Not yet               |
 | **BadHoverIdentifier**    | N/A     | N/A     | v1_16                                            | v1_16   | v1_16   | N/A                                              | N/A                   |
 | **BadHoverUUID**          | N/A     | N/A     | v1_16                                            | v1_16   | v1_16   | N/A                                              | N/A                   |
 | **BadSherdIdentifiers**   | N/A     | N/A     | N/A                                              | N/A     | N/A     | N/A                                              | v1_20 (1.20 - 1.20.1) |
