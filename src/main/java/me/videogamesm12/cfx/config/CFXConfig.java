@@ -41,7 +41,7 @@ public class CFXConfig
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
     private static final File file = new File(FabricLoader.getInstance().getConfigDir().toFile(), "cfx.json");
 
-    private static final int latestVersion = 2;
+    private static final int latestVersion = 3;
 
     public static CFXConfig load()
     {
