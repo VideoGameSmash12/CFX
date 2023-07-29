@@ -36,7 +36,7 @@ public class ComponentPatches
     }
 
     @Mixin(Text.Serializer.class)
-    @PatchMeta(minVersion = 477, maxVersion = 999) // 1.14 to Latest
+    @PatchMeta(minVersion = 477, maxVersion = 578) // 1.14 to 1.15.2
     public static class ExtraEmptyArray
     {
         @Inject(method = "deserialize(Lcom/google/gson/JsonElement;Ljava/lang/reflect/Type;Lcom/google/gson/JsonDeserializationContext;)Lnet/minecraft/text/Text;",

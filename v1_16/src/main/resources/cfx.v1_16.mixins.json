@@ -11,9 +11,11 @@
     "RendererPatches$EntityPatches$ExcessiveEntityNames"
   ],
   "mixins": [
+    "BlockEntityPatches$BadBlockEntityName",
     "ComponentPatches$BadEntityHoverIdentifier",
     "ComponentPatches$BadEntityHoverUUID",
     "ComponentPatches$BadItemHoverIdentifier",
-    "ComponentPatches$BoundlessTranslation"
+    "ComponentPatches$BoundlessTranslation",
+    "ComponentPatches$ExtraEmptyArray"
   ]
 }

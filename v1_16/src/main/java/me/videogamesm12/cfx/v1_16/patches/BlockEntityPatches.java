@@ -1,23 +1,23 @@
-package me.videogamesm12.cfx.v1_14.patches;
+package me.videogamesm12.cfx.v1_16.patches;
 
 import me.videogamesm12.cfx.CFX;
 import me.videogamesm12.cfx.management.PatchMeta;
-import net.minecraft.entity.Entity;
+import net.minecraft.block.entity.LockableContainerBlockEntity;
 import net.minecraft.text.Text;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 
-public class EntityPatches
+public class BlockEntityPatches
 {
-    @Mixin(Entity.class)
-    @PatchMeta(minVersion = 477, maxVersion = 578) // 1.14 to 1.15.2
-    public static class BadEntityName
+    @Mixin(LockableContainerBlockEntity.class)
+    @PatchMeta(minVersion = 735, maxVersion = 754) // 1.16 to 1.16.5
+    public static class BadBlockEntityName
     {
-        @ModifyArg(method = "fromTag", at = @At(value = "INVOKE", target = "Lnet/minecraft/text/Text$Serializer;fromJson(Ljava/lang/String;)Lnet/minecraft/text/Text;"))
+        @ModifyArg(method = "fromTag", at = @At(value = "INVOKE", target = "Lnet/minecraft/text/Text$Serializer;fromJson(Ljava/lang/String;)Lnet/minecraft/text/MutableText;"))
         public String validateJson(String json)
         {
-            if (CFX.getConfig().getEntityPatches().isCustomNameValidationEnabled())
+            if (CFX.getConfig().getBlockEntityPatches().isCustomNameValidationEnabled())
             {
                 try
                 {

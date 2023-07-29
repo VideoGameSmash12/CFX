@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.ModifyArg;
 public class BlockEntityPatches
 {
     @Mixin(LockableContainerBlockEntity.class)
-    @PatchMeta(minVersion = 477, maxVersion = 999)
+    @PatchMeta(minVersion = 477, maxVersion = 578) // 1.14 to 1.15.2
     public static class BadBlockEntityName
     {
         @ModifyArg(method = "fromTag", at = @At(value = "INVOKE", target = "Lnet/minecraft/text/Text$Serializer;fromJson(Ljava/lang/String;)Lnet/minecraft/text/Text;"))
