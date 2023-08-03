@@ -22,6 +22,8 @@
 
 package me.videogamesm12.cfx.management;
 
+import com.google.gson.Gson;
+import lombok.Getter;
 import me.videogamesm12.cfx.CFX;
 import me.videogamesm12.cfx.util.VersionChecker;
 import net.fabricmc.loader.api.FabricLoader;
@@ -29,19 +31,35 @@ import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
+import java.io.InputStreamReader;
+import java.util.*;
 import java.util.stream.Stream;
 
-public class PatchManager implements IMixinConfigPlugin
+/**
+ * <h1>SensitivePatchManager</h1>
+ * <p>Handles patches that affect more sensitive parts of the game by using a different way of getting metadata.</p>
+ * <br>
+ * <p>While the regular PatchManager uses the patch class itself to get its metadata by loading its class and getting
+ * the patch metadata from there using annotations, the SensitivePatchManager instead retrieves patch metadata from a
+ * JSON file stored in the main mod JAR. This <i>hopefully</i> prevents "class loaded too early" errors from happening.
+ */
+public class SensitivePatchManager implements IMixinConfigPlugin
 {
+    private static final Gson gson = new Gson();
+    private static final SensitivePatchFile sensitivePatches;
+    //--
     private final FabricLoader loader = FabricLoader.getInstance();
+
+    static
+    {
+        sensitivePatches = gson.fromJson(new InputStreamReader(Objects.requireNonNull(
+                CFX.class.getClassLoader().getResourceAsStream("cfx.sensitive-patches.json"))),
+                SensitivePatchFile.class);
+    }
 
     @Override
     public void onLoad(String mixinPackage)
     {
-
     }
 
     @Override
@@ -55,13 +73,10 @@ public class PatchManager implements IMixinConfigPlugin
     {
         try
         {
-            // Get the patch
-            final Class<?> patch = Class.forName(mixinClassName);
-
-            // Enforce the requirement that patches have to have the PatchMeta annotation
-            if (!patch.isAnnotationPresent(PatchMeta.class))
+            // Enforce requirement that sensitive patches be defined as such in the patches file
+            if (!sensitivePatches.getPatches().containsKey(mixinClassName))
             {
-                throw new IllegalArgumentException("Patch is missing the required PatchMeta annotation");
+                throw new IllegalArgumentException("Patch was not detected in the sensitive patches file");
             }
 
             // Check to see if the patch is disabled by the user in the configuration
@@ -73,14 +88,13 @@ public class PatchManager implements IMixinConfigPlugin
             }
 
             // Get the patch metadata
-            final PatchMeta metadata = patch.getAnnotation(PatchMeta.class);
+            final SensitivePatchMeta metadata = sensitivePatches.getPatches().get(mixinClassName);
 
             // Find mod conflicts
-            final Stream<String> foundConflicts = Arrays.stream(metadata.conflictingMods()).filter(loader::isModLoaded);
+            final Stream<String> foundConflicts = Arrays.stream(metadata.getConflictingMods()).filter(loader::isModLoaded);
             if (foundConflicts.findFirst().isPresent())
             {
-                CFX.getLogger().warn("Ignoring patch " + mixinClassName + " as it conflicts with mods: "
-                        + String.join(", ", foundConflicts.toString()));
+                CFX.getLogger().warn("Ignoring patch " + mixinClassName + " as it conflicts with mods: " + String.join(", ", foundConflicts.toString()));
                 return false;
             }
 
@@ -90,23 +104,26 @@ public class PatchManager implements IMixinConfigPlugin
                 return false;
             }
         }
+        // Was the patch invalid?
         catch (IllegalArgumentException ex)
         {
-            CFX.getLogger().warn("Invalid patch detected - " + mixinClassName, ex);
+            CFX.getLogger().warn("Invalid sensitive patch detected - " + mixinClassName, ex);
             return false;
         }
-        catch (Exception ignored)
+        // Did something else happen that broke everything?
+        catch (Throwable ex)
         {
+            CFX.getLogger().error("Failed to apply patch! Please report this to the mod developer immediately!", ex);
+            return false;
         }
 
-        CFX.getLogger().info("Applied patch " + mixinClassName + ".");
+        CFX.getLogger().info("Applied sensitive patch " + mixinClassName + ".");
         return true;
     }
 
     @Override
     public void acceptTargets(Set<String> myTargets, Set<String> otherTargets)
     {
-
     }
 
     @Override
@@ -118,10 +135,18 @@ public class PatchManager implements IMixinConfigPlugin
     @Override
     public void preApply(String targetClassName, ClassNode targetClass, String mixinClassName, IMixinInfo mixinInfo)
     {
+
     }
 
     @Override
     public void postApply(String targetClassName, ClassNode targetClass, String mixinClassName, IMixinInfo mixinInfo)
     {
+
+    }
+
+    @Getter
+    private static class SensitivePatchFile
+    {
+        private Map<String, SensitivePatchMeta> patches = new HashMap<>();
     }
 }

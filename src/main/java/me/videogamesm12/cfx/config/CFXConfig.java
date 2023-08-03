@@ -34,6 +34,8 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 public class CFXConfig
@@ -95,6 +97,8 @@ public class CFXConfig
 
     private Text textPatches = new Text();
 
+    private Overrides overrides = new Overrides();
+
     public void save()
     {
         try (BufferedWriter writer = Files.newBufferedWriter(file.toPath()))
@@ -153,6 +157,17 @@ public class CFXConfig
     }
 
     @Getter
+    public static class Overrides
+    {
+        /**
+         * A list of forcibly disabled patch mixin names. This is usually for in case a patch is causing a serious
+         *  problem which can't be mitigated by disabling the patch traditionally (e.g. the client refuses to boot due
+         *  to the patch mixin itself being applied in scenarios where it shouldn't be).
+         */
+        private List<String> forciblyDisabledPatches = new ArrayList<>();
+    }
+
+    @Getter
     public static class Render
     {
         private Entities entity = new Entities();
@@ -181,12 +196,27 @@ public class CFXConfig
     @Getter
     public static class Text
     {
+        private ClickEventComponent clickEvent = new ClickEventComponent();
+      
         private ExtraComponent extra = new ExtraComponent();
 
         private HoverEventComponent hoverEvent = new HoverEventComponent();
 
         private TranslatableComponent translation = new TranslatableComponent();
 
+        public static class ClickEventComponent
+        {
+            private CommandClickMode commandClickMode = CommandClickMode.NOTIFY;
+
+            public enum CommandClickMode
+            {
+                DO_NOTHING,     // Clicking the text will simply do nothing
+                NOTIFY,         // Clicking the text will cause a prompt to appear on the screen asking for confirmation
+                                //  before executing the command
+                VANILLA         // Clicking the text will execute the command like normally
+            }
+        }
+      
         @Getter
         @Setter
         public static class ExtraComponent

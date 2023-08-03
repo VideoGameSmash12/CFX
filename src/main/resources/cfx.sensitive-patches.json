@@ -1,0 +1,14 @@
+{
+  "patches": {
+    "me.videogamesm12.cfx.v1_14.sensitive_patches.ClientClickableCommand": {
+      "minVersion": 477,
+      "maxVersion": 578,
+      "conflictingMods": []
+    },
+    "me.videogamesm12.cfx.v1_16.sensitive_patches.ClientClickableCommand": {
+      "minVersion": 735,
+      "maxVersion": 758,
+      "conflictingMods": []
+    }
+  }
+}
