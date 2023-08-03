@@ -17,6 +17,7 @@
     "ComponentPatches$BoundlessTranslation",
     "ComponentPatches$ExtraEmptyArray",
     "EntityPatches$BadEntityName",
-    "NbtPatches$NBTSize"
+    "NbtPatches$NBTSize",
+    "individual.ClickableCommandSign"
   ]
 }
