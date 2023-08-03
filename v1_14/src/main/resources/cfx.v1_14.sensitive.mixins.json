@@ -8,7 +8,7 @@
     "defaultRequire": 1
   },
   "client": [
-    "SensitiveComponentPatches$ClientClickableCommand"
+    "ClientClickableCommand"
   ],
   "mixins": [
   ]
