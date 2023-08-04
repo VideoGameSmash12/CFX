@@ -60,6 +60,12 @@ public class SensitivePatchManager implements IMixinConfigPlugin
     @Override
     public void onLoad(String mixinPackage)
     {
+        // We put the warning here because if we don't, the logs will end up getting spammed with this message
+        if (!CFX.getConfig().getOverrides().areSensitivePatchesAllowed())
+        {
+            CFX.getLogger().warn("Sensitive patches are currently disabled in the mod configuration, so none of those"
+                    + " patches will be applied.");
+        }
     }
 
     @Override
@@ -73,6 +79,19 @@ public class SensitivePatchManager implements IMixinConfigPlugin
     {
         try
         {
+            // Check to see if sensitive patches are enabled
+            if (!CFX.getConfig().getOverrides().areSensitivePatchesAllowed())
+            {
+                return false;
+            }
+
+            // Check to see if the patch has been manually disabled by the user
+            if (CFX.getConfig().getOverrides().getDisabledPatches().contains(mixinClassName))
+            {
+                CFX.getLogger().warn("Ignoring patch " + mixinClassName
+                        + " as the user has specifically chosen to disable it");
+            }
+
             // Enforce requirement that sensitive patches be defined as such in the patches file
             if (!sensitivePatches.getPatches().containsKey(mixinClassName))
             {

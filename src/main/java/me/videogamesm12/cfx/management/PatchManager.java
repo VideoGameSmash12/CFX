@@ -55,6 +55,13 @@ public class PatchManager implements IMixinConfigPlugin
     {
         try
         {
+            // Check to see if the patch has been manually disabled by the user
+            if (CFX.getConfig().getOverrides().getDisabledPatches().contains(mixinClassName))
+            {
+                CFX.getLogger().warn("Ignoring patch " + mixinClassName
+                        + " as the user has specifically chosen to disable it");
+            }
+
             // Get the patch
             final Class<?> patch = Class.forName(mixinClassName);
 
