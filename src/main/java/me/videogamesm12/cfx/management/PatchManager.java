@@ -60,6 +60,7 @@ public class PatchManager implements IMixinConfigPlugin
             {
                 CFX.getLogger().warn("Ignoring patch " + mixinClassName
                         + " as the user has specifically chosen to disable it");
+                return false;
             }
 
             // Get the patch

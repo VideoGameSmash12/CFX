@@ -90,6 +90,7 @@ public class SensitivePatchManager implements IMixinConfigPlugin
             {
                 CFX.getLogger().warn("Ignoring patch " + mixinClassName
                         + " as the user has specifically chosen to disable it");
+                return false;
             }
 
             // Enforce requirement that sensitive patches be defined as such in the patches file
