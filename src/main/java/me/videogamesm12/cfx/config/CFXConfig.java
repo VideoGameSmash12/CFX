@@ -41,7 +41,7 @@ public class CFXConfig
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
     private static final File file = new File(FabricLoader.getInstance().getConfigDir().toFile(), "cfx.json");
 
-    private static final int latestVersion = 3;
+    private static final int latestVersion = 4;
 
     public static CFXConfig load()
     {
@@ -201,7 +201,7 @@ public class CFXConfig
             {
                 DO_NOTHING,     // Clicking the text will simply do nothing
                 NOTIFY,         // Clicking the text will cause a prompt to appear on the screen asking for confirmation
-                //  before executing the command
+                                //  before executing the command
                 VANILLA         // Clicking the text will execute the command like normally
             }
 
@@ -211,7 +211,7 @@ public class CFXConfig
                 NOTIFY,         // Clicking the text will cause a warning message to be sent to the logs and execute the
                 //  command
                 ONLY_NOTIFY,    // Clicking the text will cause a warning message to be sent to the logs but nothing
-                //  will be executed
+                                //  will be executed
                 VANILLA         // Clicking the text will execute the command like normally
             }
         }
