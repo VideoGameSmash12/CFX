@@ -12,7 +12,6 @@
   },
   "license": "MIT",
   "icon": "assets/cfx/icon.png",
-  "environment": "client",
   "mixins": [
     "cfx.v1_16_2.mixins.json"
   ],

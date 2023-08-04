@@ -34,6 +34,8 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 public class CFXConfig
@@ -41,7 +43,7 @@ public class CFXConfig
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
     private static final File file = new File(FabricLoader.getInstance().getConfigDir().toFile(), "cfx.json");
 
-    private static final int latestVersion = 3;
+    private static final int latestVersion = 5;
 
     public static CFXConfig load()
     {
@@ -56,6 +58,7 @@ public class CFXConfig
                 // Updates the configuration if the current version is newer than the configuration's version
                 if (instance.getVersion() < latestVersion)
                 {
+                    CFX.getLogger().info("Updating configuration to the newest version");
                     instance.setVersion(latestVersion);
                     instance.save();
                 }
@@ -94,6 +97,8 @@ public class CFXConfig
     private Render renderPatches = new Render();
 
     private Text textPatches = new Text();
+
+    private Overrides overrides = new Overrides();
 
     public void save()
     {
@@ -152,6 +157,33 @@ public class CFXConfig
         }
     }
 
+    public static class Overrides
+    {
+        /**
+         * Allow patches that affect very sensitive parts of the game. Sensitive patches are initialized in a different
+         *  way from traditional patches in order to reduce the amount of mod conflicts that may occur due to how the
+         *  mod actually pulls metadata for the patches.
+         */
+        private boolean sensitivePatchesAllowed = true;
+
+        /**
+         * Class names for patches that shouldn't be applied even if they are compatible with the current version of
+         *  Minecraft that is running. This is helpful for cases where it's causing conflicts with other mods but the
+         *  maintainer of the mod isn't aware of the issue yet.
+         */
+        @Getter
+        private List<String> disabledPatches = new ArrayList<>();
+
+        /**
+         * Returns whether to allow sensitive patches to be applied
+         * @return The value of sensitivePatchesAllowed
+         */
+        public boolean areSensitivePatchesAllowed()
+        {
+            return sensitivePatchesAllowed;
+        }
+    }
+
     @Getter
     public static class Render
     {
@@ -181,11 +213,40 @@ public class CFXConfig
     @Getter
     public static class Text
     {
+        private ClickEventComponent clickEvent = new ClickEventComponent();
+
         private ExtraComponent extra = new ExtraComponent();
 
         private HoverEventComponent hoverEvent = new HoverEventComponent();
 
         private TranslatableComponent translation = new TranslatableComponent();
+
+        @Getter
+        @Setter
+        public static class ClickEventComponent
+        {
+            private CommandClickClientMode commandClickClientMode = CommandClickClientMode.NOTIFY;
+
+            private CommandClickServerMode commandClickServerMode = CommandClickServerMode.NOTIFY;
+
+            public enum CommandClickClientMode
+            {
+                DO_NOTHING,     // Clicking the text will simply do nothing
+                NOTIFY,         // Clicking the text will cause a prompt to appear on the screen asking for confirmation
+                                //  before executing the command
+                VANILLA         // Clicking the text will execute the command like normally
+            }
+
+            public enum CommandClickServerMode
+            {
+                DO_NOTHING,     // Clicking the text will simply do nothing
+                NOTIFY,         // Clicking the text will cause a warning message to be sent to the logs and execute the
+                //  command
+                ONLY_NOTIFY,    // Clicking the text will cause a warning message to be sent to the logs but nothing
+                                //  will be executed
+                VANILLA         // Clicking the text will execute the command like normally
+            }
+        }
 
         @Getter
         @Setter

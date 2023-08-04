@@ -10,6 +10,7 @@
   "client": [
   ],
   "mixins": [
-    "ComponentPatches$OutrageousTranslation"
+    "ComponentPatches$OutrageousTranslation",
+    "individual.CommandSigns"
   ]
 }

@@ -26,6 +26,7 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 import me.videogamesm12.cfx.management.PatchMeta;
+import me.videogamesm12.cfx.management.SensitivePatchMeta;
 import net.minecraft.MinecraftVersion;
 
 import java.io.InputStreamReader;
@@ -61,6 +62,25 @@ public class VersionChecker
 
         return meta.minVersion() <= gameMetadata.getProtocolVersion()
                 && meta.maxVersion() >= gameMetadata.getProtocolVersion();
+    }
+
+    /**
+     * Checks a sensitive patch's metadata against the current version of the game by comparing protocol version numbers.
+     * @param meta  SensitivePatchMeta
+     * @return      True if the patch's metadata indicate that the game's current protocol version is in between its
+     *              minimum and maximum protocol versions
+     * @throws IllegalArgumentException If the patch's maximum version number is somehow less than the minimum
+     */
+    public static boolean isCompatibleWithCurrentVersion(SensitivePatchMeta meta)
+    {
+        if (meta.getMaxVersion() < meta.getMinVersion())
+        {
+            throw new IllegalArgumentException("Invalid patch metadata - the maximum version number should never be "
+                    + "lower than the minimum version");
+        }
+
+        return meta.getMinVersion() <= gameMetadata.getProtocolVersion()
+                && meta.getMaxVersion() >= gameMetadata.getProtocolVersion();
     }
     
     public static int getProtocolVersion()

@@ -13,7 +13,6 @@
   },
   "license": "MIT",
   "icon": "assets/cfx/icon.png",
-  "environment": "client",
   "entrypoints": {
     "main": [
       "me.videogamesm12.cfx.CFX"
