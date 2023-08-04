@@ -18,6 +18,6 @@
     "ComponentPatches$ExtraEmptyArray",
     "EntityPatches$BadEntityName",
     "NbtPatches$NBTSize",
-    "individual.ClickableCommandSign"
+    "individual.CommandSigns"
   ]
 }

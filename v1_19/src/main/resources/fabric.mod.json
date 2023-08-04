@@ -14,7 +14,8 @@
   "icon": "assets/cfx/icon.png",
   "environment": "client",
   "mixins": [
-    "cfx.v1_19.mixins.json"
+    "cfx.v1_19.mixins.json",
+    "cfx.v1_19.sensitive.mixins.json"
   ],
   "depends": {
     "minecraft": ">=1.19"

@@ -12,7 +12,8 @@ This table details what patches have yet to be back-ported from both WNT's CFX a
 | **BadHoverUUID**          | N/A     | N/A     | v1_16                                            | v1_16   | v1_16   | N/A                                              | N/A                   |
 | **BadSherdIdentifiers**   | N/A     | N/A     | N/A                                              | N/A     | N/A     | N/A                                              | v1_20 (1.20 - 1.20.1) |
 | **BoundlessTranslation**  | v1_14   | v1_14   | v1_16 (1.16 - 1.16.1), v1_16_2 (1.16.2 - 1.16.5) | v1_16_2 | v1_16_2 | v1_19 (1.19 - 1.19.2)                            | N/A                   |
-| **ClickableCommands**     | Not yet | Not yet | Not yet                                          | Not yet | Not yet | Not yet                                          | Not yet               |
+| **ClickableCommands**     | v1_14   | v1_14   | v1_16                                            | v1_16   | v1_16   | v1_19 (1.19 - 1.19.2), v1_19_3 (1.19.3 - 1.19.4) | v1_19_3               |
+| **CommandSigns**          | v1_14   | v1_14   | v1_14                                            | v1_17   | v1_17   | v1_19                                            | v1_20                 |
 | **ExcessiveEntityNames**  | v1_14   | v1_15   | v1_16                                            | v1_16   | v1_16   | v1_19                                            | v1_19                 |
 | **ExcessiveHearts**       | v1_14   | v1_14   | Not yet                                          | Not yet | Not yet | Not yet                                          | Not yet               |
 | **ExcessiveParticles**    | v1_14   | v1_14   | v1_14                                            | v1_14   | v1_14   | v1_14                                            | v1_14                 |

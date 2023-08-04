@@ -10,12 +10,12 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 /**
- * <h1>ClickableCommandSign</h1>
+ * <h1>CommandSigns</h1>
  * <p>Patch for signs that execute commands as the server when clicked</p>
  */
 @Mixin(SignBlockEntity.class)
 @PatchMeta(minVersion = 477, maxVersion = 754)
-public class ClickableCommandSign
+public class CommandSigns
 {
     @Inject(method = "onActivate",
             at = @At(value = "INVOKE",

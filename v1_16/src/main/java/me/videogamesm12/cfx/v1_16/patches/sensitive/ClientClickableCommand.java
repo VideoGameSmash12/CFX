@@ -1,4 +1,4 @@
-package me.videogamesm12.cfx.v1_16.sensitive_patches;
+package me.videogamesm12.cfx.v1_16.patches.sensitive;
 
 import me.videogamesm12.cfx.CFX;
 import net.minecraft.client.MinecraftClient;

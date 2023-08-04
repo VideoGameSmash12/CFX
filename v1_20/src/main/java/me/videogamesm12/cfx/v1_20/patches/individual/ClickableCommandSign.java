@@ -1,10 +1,12 @@
-package me.videogamesm12.cfx.v1_17.patches.individual;
+package me.videogamesm12.cfx.v1_20.patches.individual;
 
 import me.videogamesm12.cfx.CFX;
 import me.videogamesm12.cfx.management.PatchMeta;
 import net.minecraft.block.entity.SignBlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -15,14 +17,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
  * <p>Patch for signs that execute commands as the server when clicked</p>
  */
 @Mixin(SignBlockEntity.class)
-@PatchMeta(minVersion = 755, maxVersion = 999)
+@PatchMeta(minVersion = 763, maxVersion = 999)
 public class ClickableCommandSign
 {
-    @Inject(method = "onActivate",
+    @Inject(method = "runCommandClickEvent",
             at = @At(value = "INVOKE",
-                    target = "Lnet/minecraft/server/command/CommandManager;execute(Lnet/minecraft/server/command/ServerCommandSource;Ljava/lang/String;)I"),
+                    target = "Lnet/minecraft/server/command/CommandManager;executeWithPrefix(Lnet/minecraft/server/command/ServerCommandSource;Ljava/lang/String;)I"),
             cancellable = true)
-    public void handleClickedSignText(ServerPlayerEntity player, CallbackInfoReturnable<Boolean> cir)
+    public void handleClickedSignText(PlayerEntity player, World world, BlockPos pos, boolean front, CallbackInfoReturnable<Boolean> cir)
     {
         // Are we supposed to run the command?
         switch (CFX.getConfig().getTextPatches().getClickEvent().getCommandClickServerMode())
@@ -30,8 +32,8 @@ public class ClickableCommandSign
             // Don't run the command
             case ONLY_NOTIFY:
             {
-                CFX.getLogger().warn("Player " + player.getEntityName()
-                        + " attempted to execute commands in a sign, but was unsuccessful.");
+                CFX.getLogger().warn("Player " + player.getEntityName() + " attempted to execute commands in a sign at ("
+                        + pos.toShortString() + "), but was unsuccessful.");
             }
             case DO_NOTHING:
             {
@@ -42,8 +44,8 @@ public class ClickableCommandSign
             // Run the command
             case NOTIFY:
             {
-                CFX.getLogger().warn("Player " + player.getEntityName()
-                        + " clicked a sign with commands in it.");
+                CFX.getLogger().warn("Player " + player.getEntityName() + " clicked a sign with commands in it at ("
+                        + pos.toShortString() + ").");
             }
             case VANILLA:
             {

@@ -1,7 +1,7 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "me.videogamesm12.cfx.v1_16.sensitive_patches",
+  "package": "me.videogamesm12.cfx.v1_19_3.patches.sensitive",
   "plugin": "me.videogamesm12.cfx.management.SensitivePatchManager",
   "compatibilityLevel": "JAVA_8",
   "injectors": {
@@ -9,7 +9,5 @@
   },
   "client": [
     "ClientClickableCommand"
-  ],
-  "mixins": [
   ]
 }
