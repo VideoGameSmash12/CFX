@@ -8,7 +8,8 @@
     "defaultRequire": 1
   },
   "client": [
-    "RendererPatches$EntityPatches$ExcessiveEntityNames"
+    "RendererPatches$EntityPatches$ExcessiveEntityNames",
+    "RendererPatches$HudPatches$ExcessiveHearts"
   ],
   "mixins": [
     "BlockEntityPatches$BadBlockEntityName",

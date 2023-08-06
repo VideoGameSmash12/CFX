@@ -43,7 +43,7 @@ public class CFXConfig
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
     private static final File file = new File(FabricLoader.getInstance().getConfigDir().toFile(), "cfx.json");
 
-    private static final int latestVersion = 5;
+    private static final int latestVersion = 6;
 
     public static CFXConfig load()
     {
@@ -197,7 +197,11 @@ public class CFXConfig
         {
             private boolean heartCountLimitEnabled = true;
 
-            private int maxHeartsToRender = 32;
+            private boolean absorptionHeartCountLimitEnabled = true;
+
+            private int maxAbsorptionHeartsToRender = 48;
+
+            private int maxHeartsToRender = 48;
         }
 
         @Getter

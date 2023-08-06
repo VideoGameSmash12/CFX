@@ -63,14 +63,27 @@ public class RendererPatches
             @ModifyVariable(method = "renderStatusBars",
                     at = @At("STORE"),
                     ordinal = 6)
-            public int injectRenderStatusBars(int hearts)
+            public int capAbsorptionHeartCount(int hearts)
             {
-                if (!CFX.getConfig().getRenderPatches().getHud().isHeartCountLimitEnabled())
+                if (CFX.getConfig().getRenderPatches().getHud().isAbsorptionHeartCountLimitEnabled())
                 {
-                    return hearts;
+                    return Math.min(hearts,
+                            CFX.getConfig().getRenderPatches().getHud().getMaxAbsorptionHeartsToRender() * 2);
                 }
 
-                return Math.min(hearts, CFX.getConfig().getRenderPatches().getHud().getMaxHeartsToRender() * 2);
+                return hearts;
+            }
+
+            @ModifyVariable(method = "renderStatusBars", at = @At("STORE"), ordinal = 0)
+            public float capRegularHeartCount(float maxHearts)
+            {
+                if (CFX.getConfig().getRenderPatches().getHud().isHeartCountLimitEnabled())
+                {
+                    return Math.min(maxHearts,
+                            CFX.getConfig().getRenderPatches().getHud().getMaxHeartsToRender() * 2);
+                }
+
+                return maxHearts;
             }
         }
     }
