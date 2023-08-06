@@ -1,14 +1,13 @@
 package me.videogamesm12.cfx.v1_14.patches;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
+import com.google.gson.*;
 import me.videogamesm12.cfx.CFX;
+import me.videogamesm12.cfx.config.CFXConfig;
 import me.videogamesm12.cfx.management.PatchMeta;
 import net.minecraft.text.LiteralText;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
+import net.minecraft.util.Formatting;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

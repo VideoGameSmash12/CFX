@@ -23,7 +23,7 @@ public class BlockPatches
         @Inject(method = "method_30033",
                 at = @At("HEAD"),
                 cancellable = true)
-        private static void injectMethod30033(World world, BlockPos blockPos, Direction direction, CallbackInfoReturnable<Boolean> cir)
+        private static void properlyHandlePortalDirection(World world, BlockPos blockPos, Direction direction, CallbackInfoReturnable<Boolean> cir)
         {
             if (CFX.getConfig().getBlockPatches().isUpsideDownPortalPatchEnabled()
                     && direction.getAxis().getType() == Direction.Type.VERTICAL)

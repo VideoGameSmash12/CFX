@@ -8,11 +8,12 @@
     "defaultRequire": 1
   },
   "client": [
-    "RendererPatches$EntityPatches$ExcessiveEntityNames",
+    "RendererPatches$EntityPatches$ExcessiveEntityNames"
   ],
   "mixins": [
     "ComponentPatches$BoundlessTranslation",
     "ComponentPatches$OutrageousTranslation",
-    "individual.CommandSigns"
+    "individual.CommandSigns",
+    "individual.ComponentDepth"
   ]
 }

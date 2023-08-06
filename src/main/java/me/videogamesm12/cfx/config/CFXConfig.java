@@ -43,7 +43,7 @@ public class CFXConfig
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
     private static final File file = new File(FabricLoader.getInstance().getConfigDir().toFile(), "cfx.json");
 
-    private static final int latestVersion = 6;
+    private static final int latestVersion = 7;
 
     public static CFXConfig load()
     {
@@ -217,6 +217,10 @@ public class CFXConfig
     @Getter
     public static class Text
     {
+        private General general = new General();
+
+        //--
+
         private ClickEventComponent clickEvent = new ClickEventComponent();
 
         private ExtraComponent extra = new ExtraComponent();
@@ -257,6 +261,22 @@ public class CFXConfig
         public static class ExtraComponent
         {
             private boolean emptyArrayPatchEnabled = true;
+        }
+
+        @Getter
+        @Setter
+        public static class General
+        {
+            private ArrayDepthPatchMode arrayDepthMode = ArrayDepthPatchMode.OBVIOUS;
+
+            private long arrayDepthMaximum = 96;
+
+            public enum ArrayDepthPatchMode
+            {
+                OBVIOUS,        // The mod will return a component that says "*** Component is too complex ***"
+                VANILLA_LIKE,   // The mod will throw a JSON parse exception
+                VANILLA         // Nothing will happen
+            }
         }
 
         @Getter

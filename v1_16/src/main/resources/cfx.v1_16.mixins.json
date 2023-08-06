@@ -17,6 +17,7 @@
     "ComponentPatches$BadEntityHoverUUID",
     "ComponentPatches$BadItemHoverIdentifier",
     "ComponentPatches$BoundlessTranslation",
-    "ComponentPatches$ExtraEmptyArray"
+    "ComponentPatches$ExtraEmptyArray",
+    "individual.ComponentDepth"
   ]
 }
