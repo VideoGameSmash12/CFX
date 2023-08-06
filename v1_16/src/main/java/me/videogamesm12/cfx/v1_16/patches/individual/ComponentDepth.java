@@ -42,10 +42,10 @@ public class ComponentDepth
             {
                 case OBVIOUS:
                 {
-                    cir.setReturnValue(new TranslatableText("*** Component is too complex ***").formatted(Formatting.RED));
+                    cir.setReturnValue(new TranslatableText("cfx.replacement.too_complex").formatted(Formatting.RED));
                     return;
                 }
-                case VANILLA:
+                case VANILLA_LIKE:
                 {
                     throw new JsonParseException("Component is too complex, depth >= " + max);
                 }
