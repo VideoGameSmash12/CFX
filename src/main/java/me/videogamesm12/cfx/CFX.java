@@ -12,10 +12,15 @@ public class CFX implements ModInitializer
     private static final Logger logger = LogManager.getLogger("CFX");
     //--
     @Getter
-    private static final CFXConfig config = CFXConfig.load();
+    private static CFXConfig config = CFXConfig.load();
 
     @Override
     public void onInitialize()
     {
+    }
+
+    public static void reloadConfig()
+    {
+        config = CFXConfig.load();
     }
 }
