@@ -10,7 +10,8 @@
   "client": [
     "NetworkPatches$ClientBoundPatches$ExcessiveParticles",
     "RendererPatches$EntityPatches$ExcessiveEntityNames",
-    "RendererPatches$HudPatches$ExcessiveHearts"
+    "RendererPatches$HudPatches$ExcessiveHearts",
+    "individual.UndersizedHeads"
   ],
   "mixins": [
     "BlockEntityPatches$BadBlockEntityName",
