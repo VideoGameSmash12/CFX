@@ -18,6 +18,7 @@
     "ComponentPatches$BadItemHoverIdentifier",
     "ComponentPatches$BoundlessTranslation",
     "ComponentPatches$ExtraEmptyArray",
-    "individual.ComponentDepth"
+    "individual.ComponentDepth",
+    "individual.OutrageousTranslation"
   ]
 }

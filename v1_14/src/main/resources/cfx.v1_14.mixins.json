@@ -19,6 +19,7 @@
     "EntityPatches$BadEntityName",
     "NbtPatches$NBTSize",
     "individual.CommandSigns",
-    "individual.ComponentDepth"
+    "individual.ComponentDepth",
+    "individual.OutrageousTranslation"
   ]
 }
