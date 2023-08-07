@@ -16,6 +16,11 @@
     "cfx.v1_14.mixins.json",
     "cfx.v1_14.sensitive.mixins.json"
   ],
+  "entrypoints": {
+    "cfx": [
+      "me.videogamesm12.cfx.v1_14.delegation.TextProvider"
+    ]
+  },
   "custom": {
     "modmenu": {
       "parent": "cfx"

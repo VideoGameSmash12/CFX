@@ -16,6 +16,11 @@
     "cfx.v1_19.mixins.json",
     "cfx.v1_19.sensitive.mixins.json"
   ],
+  "entrypoints": {
+    "cfx": [
+      "me.videogamesm12.cfx.v1_19.delegation.TextProvider"
+    ]
+  },
   "depends": {
     "minecraft": ">=1.19"
   },
