@@ -43,7 +43,7 @@ public class CFXConfig
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
     private static final File file = new File(FabricLoader.getInstance().getConfigDir().toFile(), "cfx.json");
 
-    private static final int latestVersion = 7;
+    private static final int latestVersion = 8;
 
     public static CFXConfig load()
     {
@@ -95,6 +95,8 @@ public class CFXConfig
     private Network networkPatches = new Network();
 
     private Render renderPatches = new Render();
+
+    private Resources resourcePatches = new Resources();
 
     private Text textPatches = new Text();
 
@@ -181,6 +183,19 @@ public class CFXConfig
         public boolean areSensitivePatchesAllowed()
         {
             return sensitivePatchesAllowed;
+        }
+    }
+
+    @Getter
+    public static class Resources
+    {
+        private PlayerSkins playerSkins = new PlayerSkins();
+
+        @Getter
+        @Setter
+        public static class PlayerSkins
+        {
+            private boolean minimumSkinResolutionEnforcementEnabled = true;
         }
     }
 

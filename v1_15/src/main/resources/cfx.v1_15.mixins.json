@@ -8,6 +8,7 @@
     "defaultRequire": 1
   },
   "client": [
-    "RendererPatches$EntityPatches$ExcessiveEntityNames"
+    "RendererPatches$EntityPatches$ExcessiveEntityNames",
+    "individual.UndersizedHeads"
   ]
 }
