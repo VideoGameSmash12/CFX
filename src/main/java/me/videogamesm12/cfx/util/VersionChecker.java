@@ -48,7 +48,7 @@ public class VersionChecker
 
     /**
      * Checks a provider's metadata against the current version of the game by comparing protocol version numbers.
-     * @param meta  PatchMeta
+     * @param meta  Requirements
      * @return      True if the provider's metadata indicate that the game's current protocol version is in between its
      *              minimum and maximum protocol versions
      * @throws IllegalArgumentException If the provider's maximum version number is somehow less than the minimum

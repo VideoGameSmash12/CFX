@@ -12,6 +12,11 @@
   },
   "license": "MIT",
   "icon": "assets/cfx/icon.png",
+  "entrypoints": {
+    "cfx-feedback": [
+      "me.videogamesm12.cfx.v1_20.delegation.FeedbackSender"
+    ]
+  },
   "mixins": [
     "cfx.v1_20.mixins.json"
   ],

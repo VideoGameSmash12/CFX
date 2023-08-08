@@ -7,7 +7,7 @@ import net.fabricmc.fabric.api.client.command.v1.ClientCommandManager;
 
 /**
  * <h1>V1ClientCommandRegistrar</h1>
- * <p>Registers server commands for clients running version 1 of the Fabric API, which was used until 1.19.</p>
+ * <p>Registers commands for clients running version 1 of the Fabric command API, which was used until 1.19.</p>
  */
 @Requirements(min = 754, max = 758, dependencies = {"fabric-command-api-v1"}, priority = 1)
 public class V1ClientCommandRegistrar implements IClientCommandRegistrar

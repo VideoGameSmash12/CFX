@@ -7,6 +7,10 @@ import net.fabricmc.loader.api.FabricLoader;
 import java.util.Comparator;
 import java.util.Optional;
 
+/**
+ * <h1>Delegator</h1>
+ * <p>Handles various tasks across multiple versions of the game.</p>
+ */
 public class Delegator
 {
     private static ITextProvider textProvider = null;
@@ -99,7 +103,7 @@ public class Delegator
         {
             if (!registrar.getClass().isAnnotationPresent(Requirements.class))
             {
-                CFX.getLogger().error("Client command registrar " + registrar.getClass().getName() + " is missing the required Requirements annotation");
+                CFX.getLogger().error("Server command registrar " + registrar.getClass().getName() + " is missing the required Requirements annotation");
                 return false;
             }
 
