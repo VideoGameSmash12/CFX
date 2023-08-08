@@ -18,6 +18,9 @@
   "entrypoints": {
     "main": [
       "me.videogamesm12.cfx.CFX"
+    ],
+    "client": [
+      "me.videogamesm12.cfx.entrypoint.Client"
     ]
   }
 }

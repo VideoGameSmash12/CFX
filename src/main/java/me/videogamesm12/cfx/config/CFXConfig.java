@@ -43,7 +43,7 @@ public class CFXConfig
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
     private static final File file = new File(FabricLoader.getInstance().getConfigDir().toFile(), "cfx.json");
 
-    private static final int latestVersion = 8;
+    private static final int latestVersion = 9;
 
     public static CFXConfig load()
     {
@@ -175,6 +175,20 @@ public class CFXConfig
          */
         @Getter
         private List<String> disabledPatches = new ArrayList<>();
+
+        /**
+         * Allow the mod to set up the server-side command "/cfxserver" if the appropriate dependencies are in place. If
+         *  no dependencies are detected, then the mod will act like this setting was set to false.
+         */
+        @Getter
+        private boolean serverCommandEnabled = true;
+
+        /**
+         * Allow the mod to set up the client-side command "/cfxclient" if the appropriate dependencies are in place. If
+         *  no dependencies are detected, then the mod will act like this setting was set to false.
+         */
+        @Getter
+        private boolean clientCommandEnabled = true;
 
         /**
          * Returns whether to allow sensitive patches to be applied

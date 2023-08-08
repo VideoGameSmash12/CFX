@@ -16,6 +16,21 @@
     "cfx.v1_14.mixins.json",
     "cfx.v1_14.sensitive.mixins.json"
   ],
+  "entrypoints": {
+    "cfx": [
+      "me.videogamesm12.cfx.v1_14.delegation.TextProvider"
+    ],
+    "cfx-feedback": [
+      "me.videogamesm12.cfx.v1_14.delegation.FeedbackSender"
+    ],
+    "cfx-server": [
+      "me.videogamesm12.cfx.v1_14.delegation.V0ServerCommandRegistrar",
+      "me.videogamesm12.cfx.v1_14.delegation.V1ServerCommandRegistrar"
+    ],
+    "cotton-client-commands": [
+      "me.videogamesm12.cfx.v1_14.delegation.CottonCommandRegistrar"
+    ]
+  },
   "custom": {
     "modmenu": {
       "parent": "cfx"
