@@ -20,7 +20,7 @@ public class ReloadCommand
 
             // To ensure compatibility with both Fabric API and Cotton Client Commands, we do not rely on a specific API
             //  for sending chat messages to the sender with client-side commands. Instead, we just simply use
-            //  ClientPlayerEntity's sendMessage method to achieve the same goal.
+            //  InGameHud's addMessage method.
             MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(
                     Delegator.getTextProvider().translatable("cfx.command.reload.success", Formatting.GREEN));
             return 1;
