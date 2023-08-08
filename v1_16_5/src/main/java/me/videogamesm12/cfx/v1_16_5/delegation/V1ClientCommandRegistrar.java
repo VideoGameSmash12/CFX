@@ -1,4 +1,4 @@
-package me.videogamesm12.cfx.v1_16.delegation;
+package me.videogamesm12.cfx.v1_16_5.delegation;
 
 import me.videogamesm12.cfx.command.ReloadCommand;
 import me.videogamesm12.cfx.delegation.IClientCommandRegistrar;
