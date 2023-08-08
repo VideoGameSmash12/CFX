@@ -177,6 +177,20 @@ public class CFXConfig
         private List<String> disabledPatches = new ArrayList<>();
 
         /**
+         * Allow the mod to set up the server-side command "/cfxserver" if the appropriate dependencies are in place. If
+         *  no dependencies are detected, then the mod will act like this setting was set to false.
+         */
+        @Getter
+        private boolean serverCommandEnabled = true;
+
+        /**
+         * Allow the mod to set up the client-side command "/cfxclient" if the appropriate dependencies are in place. If
+         *  no dependencies are detected, then the mod will act like this setting was set to false.
+         */
+        @Getter
+        private boolean clientCommandEnabled = true;
+
+        /**
          * Returns whether to allow sensitive patches to be applied
          * @return The value of sensitivePatchesAllowed
          */

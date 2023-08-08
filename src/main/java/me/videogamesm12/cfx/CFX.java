@@ -18,8 +18,7 @@ public class CFX implements ModInitializer
     @Override
     public void onInitialize()
     {
-        Delegator.registerClientCommands();
-        Delegator.registerServerCommands();
+        if (config.getOverrides().isServerCommandEnabled()) Delegator.registerServerCommands();
     }
 
     public static void reloadConfig()
