@@ -9,4 +9,8 @@ public @interface Requirements
     int min();
 
     int max();
+
+    String[] dependencies() default {};
+
+    int priority() default 0;
 }

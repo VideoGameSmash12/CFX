@@ -2,6 +2,7 @@ package me.videogamesm12.cfx;
 
 import lombok.Getter;
 import me.videogamesm12.cfx.config.CFXConfig;
+import me.videogamesm12.cfx.delegation.Delegator;
 import net.fabricmc.api.ModInitializer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -17,10 +18,13 @@ public class CFX implements ModInitializer
     @Override
     public void onInitialize()
     {
+        Delegator.registerClientCommands();
+        Delegator.registerServerCommands();
     }
 
     public static void reloadConfig()
     {
+        logger.info("Reloading configuration!");
         config = CFXConfig.load();
     }
 }
