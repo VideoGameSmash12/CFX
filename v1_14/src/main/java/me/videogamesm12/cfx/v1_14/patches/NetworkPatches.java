@@ -35,13 +35,15 @@ public class NetworkPatches
 {
     public static class ClientBoundPatches
     {
+        /**
+         * <h3>ExcessiveParticles</h3>
+         * <p>Fixes an exploit caused by a lack of a limit in how many particles can be in a single packet.</p>
+         * <p>This patch is for 1.14+.</p>
+         */
         @Mixin(ClientPlayNetworkHandler.class)
-        @PatchMeta(minVersion = 477, maxVersion = 9999) // 1.14.4 to Latest
+        @PatchMeta(minVersion = 477, maxVersion = 9999) // 1.14 to Latest
         public static class ExcessiveParticles
         {
-            /**
-             * Fixes an exploit caused by particle packets with extreme counts
-             */
             @Inject(method = "onParticle",
                     at = @At("HEAD"),
                     cancellable = true)

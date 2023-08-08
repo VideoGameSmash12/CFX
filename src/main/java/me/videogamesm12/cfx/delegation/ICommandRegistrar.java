@@ -20,31 +20,21 @@
  * OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package me.videogamesm12.cfx.management;
-
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+package me.videogamesm12.cfx.delegation;
 
 /**
- * <h1>SensitivePatchMeta</h1>
- * <p>Metadata for sensitive patches.</p>
+ * <h1>ICommandRegistrar</h1>
+ * <p>Interface for anything that registers commands. Client and server commands are registered separately using the
+ * "cfx-client" and "cfx-server" entrypoints respectively.</p>
+ * <p>Registrars that use certain APIs like Cotton Client Commands do not need to be registered as a command registrar
+ * in the entrypoints section as those APIs call the shots to register the commands.</p>
+ * <p>All command registrars must have the {@link Requirements} annotation in order to be properly recognized by the
+ * Delegator.</p>
  */
-@AllArgsConstructor
-@Getter
-public class SensitivePatchMeta
+public interface ICommandRegistrar
 {
     /**
-     * The minimum protocol version of the game that supports this patch.
+     * Registers the mod's commands or sets up the foundation for the registrar to do so.
      */
-    private int minVersion;
-
-    /**
-     * The maximum protocol version of the game that supports this patch.
-     */
-    private int maxVersion;
-
-    /**
-     * An array of known mod IDs that conflict with this patch. It is an empty array by default.
-     */
-    private String[] conflictingMods = {};
+    void register();
 }

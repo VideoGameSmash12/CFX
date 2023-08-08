@@ -25,6 +25,10 @@ package me.videogamesm12.cfx.management;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
+/**
+ * <h1>PatchMeta</h1>
+ * <p>Metadata for patches.</p>
+ */
 @Retention(RetentionPolicy.RUNTIME)
 public @interface PatchMeta
 {

@@ -37,7 +37,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class BlockEntityPatches
 {
     /**
-     * Fixes an exploit caused by an oversight in how the game processes Decorated Pots
+     * <h2>BadSherdIdentifiers</h2>
+     * <p>Fixes an exploit caused by an oversight in how the game processes Decorated Pots.</p>
+     * <p>This patch is for versions 1.20 to 1.20.1.</p>
      */
     @Mixin(DecoratedPotBlockEntity.Sherds.class)
     @PatchMeta(minVersion = 763, maxVersion = 764)

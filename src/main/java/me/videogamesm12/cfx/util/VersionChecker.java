@@ -33,6 +33,10 @@ import net.minecraft.MinecraftVersion;
 import java.io.InputStreamReader;
 import java.util.Objects;
 
+/**
+ * <h1>VersionChecker</h1>
+ * <p>Utility class for checking and comparing with the currently running version of Minecraft.</p>
+ */
 public class VersionChecker
 {
     private static final Gson gson = new Gson();

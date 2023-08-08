@@ -41,7 +41,7 @@ import java.util.stream.Stream;
  * <br>
  * <p>While the regular PatchManager uses the patch class itself to get its metadata by loading its class and getting
  * the patch metadata from there using annotations, the SensitivePatchManager instead retrieves patch metadata from a
- * JSON file stored in the main mod JAR. This <i>hopefully</i> prevents "class loaded too early" errors from happening.
+ * JSON file stored in the main mod JAR. This <i>hopefully</i> prevents "class loaded too early" errors from happening.</p>
  */
 public class SensitivePatchManager implements IMixinConfigPlugin
 {

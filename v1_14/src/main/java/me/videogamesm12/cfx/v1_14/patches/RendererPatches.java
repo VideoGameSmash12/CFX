@@ -34,6 +34,11 @@ public class RendererPatches
 {
     public static class EntityPatches
     {
+        /**
+         * <h3>ExcessiveEntityNames</h3>
+         * <p>Mitigates an exploit caused by entities with custom names that are excessively long.</p>
+         * <p>This patch is for versions 1.14 to 1.14.4.</p>
+         */
         @Mixin(EntityRenderer.class)
         @PatchMeta(minVersion = 477, maxVersion = 498) // 1.14.4 only
         public static class ExcessiveEntityNames
@@ -56,8 +61,13 @@ public class RendererPatches
 
     public static class HudPatches
     {
+        /**
+         * <h3>ExcessiveHearts</h3>
+         * <p>Mitigates an exploit caused by a lack of a limit for how many hearts can be rendered on screen at once.</p>
+         * <p>This patch is for versions 1.14 to 1.15.2.</p>
+         */
         @Mixin(value = InGameHud.class)
-        @PatchMeta(minVersion = 477, maxVersion = 578) // 1.14.4 to 1.15.2
+        @PatchMeta(minVersion = 477, maxVersion = 578) // 1.14 to 1.15.2
         public static class ExcessiveHearts
         {
             @ModifyVariable(method = "renderStatusBars",
