@@ -42,7 +42,7 @@ public class BlockEntityPatches
      * <p>This patch is for versions 1.20 to 1.20.1.</p>
      */
     @Mixin(DecoratedPotBlockEntity.Sherds.class)
-    @PatchMeta(minVersion = 763, maxVersion = 764)
+    @PatchMeta(minVersion = 763, maxVersion = 763)
     public static class BadSherdIdentifiers
     {
         @Inject(method = "getSherd", at = @At(value = "INVOKE",

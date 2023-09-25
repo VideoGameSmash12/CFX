@@ -39,7 +39,7 @@ public class NbtPatches
      * <p>This patch does not take effect if you are running DeviousMod.</p>
      */
     @Mixin(NbtTagSizeTracker.class)
-    @PatchMeta(minVersion = 761, maxVersion = 999, conflictingMods = "deviousmod") // 1.19.3 to 1.20.1
+    @PatchMeta(minVersion = 761, maxVersion = 763, conflictingMods = "deviousmod") // 1.19.3 to 1.20.1
     public static class NBTSize
     {
         @Inject(method = "add",

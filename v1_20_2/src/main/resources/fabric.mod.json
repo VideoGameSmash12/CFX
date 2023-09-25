@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "cfx-v1_20_2",
+  "version": "${version}",
+  "name": "Patches for 1.20.2+ exploits",
+  "description": "CFX patches for exploits starting at 1.20.2.",
+  "authors": [
+    "videogamesm12"
+  ],
+  "contact": {
+    "repo": "https://github.com/VideoGameSmash12/CFX"
+  },
+  "license": "MIT",
+  "icon": "assets/cfx/icon.png",
+  "mixins": [
+    "cfx.v1_20_2.mixins.json"
+  ],
+  "depends": {
+    "minecraft": ">=1.20.2"
+  },
+  "custom": {
+    "modmenu": {
+      "parent": "cfx"
+    }
+  }
+}
