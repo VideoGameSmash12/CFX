@@ -1,5 +1,5 @@
 # CFX
-CFX is a Fabric mod for Minecraft 1.14 to 1.20.1 that patches hazardous exploits. It was originally included as a subproject of the WNT project, but will be replaced with this version in the future.
+CFX is a Fabric mod for Minecraft 1.14 to 1.20.2 that patches hazardous exploits. It was originally included as a subproject of the WNT project, but will be replaced with this version in the future.
 
 ## Why?
 For almost a decade now, Minecraft exploiting has become increasingly common and increasingly dangerous. While Mojang has been making a commendable effort to combat this by patching exploits in their game with updates, they don't support older, more vulnerable versions of the game. For most people, this isn't a problem, because all they need to do to stay protected is to use the latest and greatest version of Minecraft. However, some people simply can't do that for one reason or another (such as running older hardware or using mods that don't support later versions of the game).
