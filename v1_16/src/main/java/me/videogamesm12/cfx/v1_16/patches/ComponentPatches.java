@@ -197,10 +197,10 @@ public class ComponentPatches
     /**
      * <h2>ExtraEmptyArray</h2>
      * <p>Fixes an exploit caused by an oversight in the translatable component's placeholder system.</p>
-     * <p>This patch is for 1.16+.</p>
+     * <p>This patch is for 1.16 to 1.20.2.</p>
      */
     @Mixin(Text.Serializer.class)
-    @PatchMeta(minVersion = 735, maxVersion = 999) // 1.16 to Latest
+    @PatchMeta(minVersion = 735, maxVersion = 764) // 1.16 to 1.20.2
     public static class ExtraEmptyArray
     {
         @Inject(method = "deserialize(Lcom/google/gson/JsonElement;Ljava/lang/reflect/Type;Lcom/google/gson/JsonDeserializationContext;)Lnet/minecraft/text/MutableText;",

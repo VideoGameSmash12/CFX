@@ -20,7 +20,7 @@
  * OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package me.videogamesm12.cfx.v1_20.patches.individual;
+package me.videogamesm12.cfx.v1_20_3.patches.individual;
 
 import me.videogamesm12.cfx.CFX;
 import me.videogamesm12.cfx.management.PatchMeta;
@@ -37,15 +37,15 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 /**
  * <h1>ClickableCommandSign</h1>
  * <p>Fixes or mitigates signs that execute commands when clicked.</p>
- * <p>This patch is for versions 1.20 to 1.20.2.</p>
+ * <p>This patch is for versions 1.20.3+.</p>
  */
 @Mixin(SignBlockEntity.class)
-@PatchMeta(minVersion = 763, maxVersion = 764) // 1.20 to 1.20.2
+@PatchMeta(minVersion = 765, maxVersion = 999)
 public class ClickableCommandSign
 {
     @Inject(method = "runCommandClickEvent",
             at = @At(value = "INVOKE",
-                    target = "Lnet/minecraft/server/command/CommandManager;executeWithPrefix(Lnet/minecraft/server/command/ServerCommandSource;Ljava/lang/String;)I"),
+                    target = "Lnet/minecraft/server/command/CommandManager;executeWithPrefix(Lnet/minecraft/server/command/ServerCommandSource;Ljava/lang/String;)V"),
             cancellable = true)
     public void handleClickedSignText(PlayerEntity player, World world, BlockPos pos, boolean front, CallbackInfoReturnable<Boolean> cir)
     {
@@ -55,7 +55,7 @@ public class ClickableCommandSign
             // Don't run the command
             case ONLY_NOTIFY:
             {
-                CFX.getLogger().warn("Player " + player.getEntityName() + " attempted to execute commands in a sign at ("
+                CFX.getLogger().warn("Player " + player.getGameProfile().getName() + " attempted to execute commands in a sign at ("
                         + pos.toShortString() + "), but was unsuccessful.");
             }
             case DO_NOTHING:
@@ -67,7 +67,7 @@ public class ClickableCommandSign
             // Run the command
             case NOTIFY:
             {
-                CFX.getLogger().warn("Player " + player.getEntityName() + " clicked a sign with commands in it at ("
+                CFX.getLogger().warn("Player " + player.getGameProfile().getName() + " clicked a sign with commands in it at ("
                         + pos.toShortString() + ").");
             }
             case VANILLA:

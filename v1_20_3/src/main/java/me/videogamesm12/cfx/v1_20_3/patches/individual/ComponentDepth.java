@@ -20,7 +20,7 @@
  * OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package me.videogamesm12.cfx.v1_19.patches.individual;
+package me.videogamesm12.cfx.v1_20_3.patches.individual;
 
 import com.google.gson.*;
 import me.videogamesm12.cfx.CFX;
@@ -41,16 +41,19 @@ import java.lang.reflect.Type;
  * <p>This patch is for versions 1.16 to 1.18.2.</p>
  */
 @Mixin(Text.Serializer.class)
-@PatchMeta(minVersion = 759, maxVersion = 764) // 1.19 to 1.20.2
+@PatchMeta(minVersion = 765, maxVersion = 999) // 1.20.3 to Latest
 public class ComponentDepth
 {
     @Inject(method = "deserialize(Lcom/google/gson/JsonElement;Ljava/lang/reflect/Type;Lcom/google/gson/JsonDeserializationContext;)Lnet/minecraft/text/MutableText;",
-            at = @At(value = "INVOKE",
-                    target = "Lcom/google/gson/JsonElement;getAsJsonArray()Lcom/google/gson/JsonArray;",
-                    shift = At.Shift.AFTER),
+            at = @At("HEAD"),
             cancellable = true)
     public void patchComponentDepth(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext, CallbackInfoReturnable<Text> cir)
     {
+        if (!jsonElement.isJsonArray())
+        {
+            return;
+        }
+
         final JsonArray array = jsonElement.getAsJsonArray();
 
         if (CFX.getConfig().getTextPatches().getGeneral().getArrayDepthMode() != CFXConfig.Text.General.ArrayDepthPatchMode.VANILLA)
