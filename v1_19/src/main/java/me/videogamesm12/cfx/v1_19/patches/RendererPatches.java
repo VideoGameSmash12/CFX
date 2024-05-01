@@ -35,7 +35,7 @@ public class RendererPatches
     public static class EntityPatches
     {
         @Mixin(EntityRenderer.class)
-        @PatchMeta(minVersion = 759, maxVersion = 9999) // 1.19 to 1.20.1
+        @PatchMeta(minVersion = 759, maxVersion = 765) // 1.19 to 1.20.4
         public static class ExcessiveEntityNames
         {
             @ModifyVariable(method = "renderLabelIfPresent", at = @At(value = "HEAD"), argsOnly = true)

@@ -20,10 +20,10 @@ import java.util.regex.Pattern;
 /**
  * <h1>OutrageousTranslationTwo</h1>
  * <p>Patches an exploit in the new way of doing Text serialization by code.</p>
- * <p>This patch is for 1.20.3+.</p>
+ * <p>This patch is for 1.20.3 to 1.20.4.</p>
  */
 @Mixin(Text.Serialization.class)
-@PatchMeta(minVersion = 765, maxVersion = 999) // 1.20.3 to Latest
+@PatchMeta(minVersion = 765, maxVersion = 765) // 1.20.3 to 1.20.4
 public class OutrageousTranslationTwo
 {
     private static final Pattern PLACEHOLDER_PATTERN = Pattern.compile("%[0-9]{1,}\\$s");

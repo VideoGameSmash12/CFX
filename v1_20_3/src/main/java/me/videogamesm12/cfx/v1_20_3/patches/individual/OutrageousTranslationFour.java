@@ -23,10 +23,10 @@ import java.util.regex.Pattern;
  * <h1>OutrageousTranslationFour</h1>
  * <p>Patches an exploit in the new way of doing Text serialization by code.</p>
  * <p>This particular patch affects the game's packet system to hook into when components are processed by the client.</p>
- * <p>This patch is for 1.20.3+.</p>
+ * <p>This patch is for 1.20.3 to 1.20.4.</p>
  */
 @Mixin(PacketByteBuf.class)
-@PatchMeta(minVersion = 765, maxVersion = 999) // 1.20.3 to Latest
+@PatchMeta(minVersion = 765, maxVersion = 765) // 1.20.3 to 1.20.4
 public abstract class OutrageousTranslationFour
 {
     @Shadow public abstract NbtElement readNbt(NbtTagSizeTracker tracker);
