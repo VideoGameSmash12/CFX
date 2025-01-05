@@ -10,10 +10,7 @@
   "mixins": [
     "individual.ClickableCommandSign",
     "individual.ComponentDepth",
-    "individual.OutrageousTranslation",
-    "individual.OutrageousTranslationFour",
-    "individual.OutrageousTranslationThree",
-    "individual.OutrageousTranslationTwo"
+    "individual.OutrageousTranslation"
   ],
   "client": [
   ]

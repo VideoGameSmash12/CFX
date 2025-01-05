@@ -38,7 +38,7 @@ import java.lang.reflect.Type;
 /**
  * <h1>ComponentDepth</h1>
  * <p>Fixes an exploit caused by a design flaw in the component system.</p>
- * <p>This patch is for versions 1.16 to 1.18.2.</p>
+ * <p>This patch is for versions 1.20.3+.</p>
  */
 @Mixin(Text.Serializer.class)
 @PatchMeta(minVersion = 765, maxVersion = 999) // 1.20.3 to Latest
