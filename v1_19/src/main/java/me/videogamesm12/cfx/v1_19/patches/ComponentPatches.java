@@ -33,6 +33,7 @@ import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableTextContent;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.JsonHelper;
+import net.minecraft.util.Language;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -80,7 +81,7 @@ public class ComponentPatches
     @PatchMeta(minVersion = 759, maxVersion = 764) // 1.19 to 1.20.2
     public static class OutrageousTranslation
     {
-        private static final Pattern PLACEHOLDER_PATTERN = Pattern.compile("%[0-9]{1,}\\$s");
+        private static final Pattern PLACEHOLDER_PATTERN = Pattern.compile("%([0-9]{1,}\\$)?s");
 
         @Inject(method = "deserialize(Lcom/google/gson/JsonElement;Ljava/lang/reflect/Type;Lcom/google/gson/JsonDeserializationContext;)Lnet/minecraft/text/MutableText;",
                 at = @At(value = "INVOKE",
@@ -113,6 +114,13 @@ public class ComponentPatches
             if (from.has("translate"))
             {
                 String key = JsonHelper.getString(from, "translate");
+
+                // Account for valid localization entries as well
+                if (Language.getInstance().hasTranslation(key))
+                {
+                    key = Language.getInstance().get(key);
+                }
+
                 Matcher matcher = PLACEHOLDER_PATTERN.matcher(key);
                 amount += matcher.results().count();
             }
@@ -121,6 +129,13 @@ public class ComponentPatches
             if (from.has("fallback"))
             {
                 String key = JsonHelper.getString(from, "fallback");
+
+                // Account for valid localization entries as well
+                if (Language.getInstance().hasTranslation(key))
+                {
+                    key = Language.getInstance().get(key);
+                }
+
                 Matcher matcher = PLACEHOLDER_PATTERN.matcher(key);
                 amount += matcher.results().count();
             }
@@ -129,6 +144,13 @@ public class ComponentPatches
             if (from.has("keybind"))
             {
                 String key = JsonHelper.getString(from, "keybind");
+
+                // Account for valid localization entries as well
+                if (Language.getInstance().hasTranslation(key))
+                {
+                    key = Language.getInstance().get(key);
+                }
+
                 Matcher matcher = PLACEHOLDER_PATTERN.matcher(key);
                 amount += matcher.results().count();
             }

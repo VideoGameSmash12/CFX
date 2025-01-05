@@ -9,6 +9,7 @@ import net.minecraft.network.PacketByteBuf;
 import net.minecraft.text.Text;
 import net.minecraft.text.TextCodecs;
 import net.minecraft.util.Formatting;
+import net.minecraft.util.Language;
 import net.minecraft.util.Util;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -33,7 +34,7 @@ public abstract class OutrageousTranslationFour
 
     @Shadow @Deprecated public abstract <T> T decode(DynamicOps<NbtElement> ops, Codec<T> codec);
 
-    private static final Pattern PLACEHOLDER_PATTERN = Pattern.compile("%[0-9]{1,}\\$s");
+    private static final Pattern PLACEHOLDER_PATTERN = Pattern.compile("%([0-9]{1,}\\$)?s");
 
     @Inject(method = "readUnlimitedText",
             at = @At("HEAD"),
@@ -89,6 +90,13 @@ public abstract class OutrageousTranslationFour
         if (from.contains("translate"))
         {
             String key = from.getString("translate");
+
+            // Account for valid localization entries as well
+            if (Language.getInstance().hasTranslation(key))
+            {
+                key = Language.getInstance().get(key);
+            }
+
             Matcher matcher = PLACEHOLDER_PATTERN.matcher(key);
             amount += matcher.results().count();
         }
@@ -97,6 +105,13 @@ public abstract class OutrageousTranslationFour
         if (from.contains("fallback"))
         {
             String key = from.getString("fallback");
+
+            // Account for valid localization entries as well
+            if (Language.getInstance().hasTranslation(key))
+            {
+                key = Language.getInstance().get(key);
+            }
+
             Matcher matcher = PLACEHOLDER_PATTERN.matcher(key);
             amount += matcher.results().count();
         }
@@ -105,6 +120,13 @@ public abstract class OutrageousTranslationFour
         if (from.contains("keybind"))
         {
             String key = from.getString("keybind");
+
+            // Account for valid localization entries as well
+            if (Language.getInstance().hasTranslation(key))
+            {
+                key = Language.getInstance().get(key);
+            }
+
             Matcher matcher = PLACEHOLDER_PATTERN.matcher(key);
             amount += matcher.results().count();
         }

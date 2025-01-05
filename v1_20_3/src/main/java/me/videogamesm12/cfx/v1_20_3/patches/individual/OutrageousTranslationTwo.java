@@ -9,6 +9,7 @@ import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.JsonHelper;
+import net.minecraft.util.Language;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -26,7 +27,7 @@ import java.util.regex.Pattern;
 @PatchMeta(minVersion = 765, maxVersion = 765) // 1.20.3 to 1.20.4
 public class OutrageousTranslationTwo
 {
-    private static final Pattern PLACEHOLDER_PATTERN = Pattern.compile("%[0-9]{1,}\\$s");
+    private static final Pattern PLACEHOLDER_PATTERN = Pattern.compile("%([0-9]{1,}\\$)?s");
 
     @Inject(method = "fromJson(Lcom/google/gson/JsonElement;)Lnet/minecraft/text/MutableText;",
             at = @At("HEAD"),
@@ -78,6 +79,13 @@ public class OutrageousTranslationTwo
             if (from.has("translate"))
             {
                 String key = JsonHelper.getString(from, "translate");
+
+                // Account for valid localization entries as well
+                if (Language.getInstance().hasTranslation(key))
+                {
+                    key = Language.getInstance().get(key);
+                }
+
                 Matcher matcher = PLACEHOLDER_PATTERN.matcher(key);
                 amount += matcher.results().count();
             }
@@ -86,6 +94,13 @@ public class OutrageousTranslationTwo
             if (from.has("fallback"))
             {
                 String key = JsonHelper.getString(from, "fallback");
+
+                // Account for valid localization entries as well
+                if (Language.getInstance().hasTranslation(key))
+                {
+                    key = Language.getInstance().get(key);
+                }
+
                 Matcher matcher = PLACEHOLDER_PATTERN.matcher(key);
                 amount += matcher.results().count();
             }
@@ -94,6 +109,13 @@ public class OutrageousTranslationTwo
             if (from.has("keybind"))
             {
                 String key = JsonHelper.getString(from, "keybind");
+
+                // Account for valid localization entries as well
+                if (Language.getInstance().hasTranslation(key))
+                {
+                    key = Language.getInstance().get(key);
+                }
+
                 Matcher matcher = PLACEHOLDER_PATTERN.matcher(key);
                 amount += matcher.results().count();
             }

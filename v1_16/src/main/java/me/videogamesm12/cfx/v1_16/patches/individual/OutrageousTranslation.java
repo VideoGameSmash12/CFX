@@ -32,6 +32,7 @@ import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.JsonHelper;
+import net.minecraft.util.Language;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -50,7 +51,7 @@ import java.util.regex.Pattern;
 @PatchMeta(minVersion = 735, maxVersion = 754) // 1.16 - 1.16.5
 public class OutrageousTranslation
 {
-    private static final Pattern PLACEHOLDER_PATTERN = Pattern.compile("%[0-9]{1,}\\$s");
+    private static final Pattern PLACEHOLDER_PATTERN = Pattern.compile("%([0-9]{1,}\\$)?s");
 
     @Inject(method = "deserialize(Lcom/google/gson/JsonElement;Ljava/lang/reflect/Type;Lcom/google/gson/JsonDeserializationContext;)Lnet/minecraft/text/MutableText;",
             at = @At(value = "INVOKE",
@@ -83,6 +84,13 @@ public class OutrageousTranslation
         if (from.has("translate"))
         {
             String key = JsonHelper.getString(from, "translate");
+
+            // Account for valid localization entries as well
+            if (Language.getInstance().hasTranslation(key))
+            {
+                key = Language.getInstance().get(key);
+            }
+
             Matcher matcher = PLACEHOLDER_PATTERN.matcher(key);
             while (matcher.find()) amount += 1;
         }
@@ -91,6 +99,13 @@ public class OutrageousTranslation
         if (from.has("keybind"))
         {
             String key = JsonHelper.getString(from, "keybind");
+
+            // Account for valid localization entries as well
+            if (Language.getInstance().hasTranslation(key))
+            {
+                key = Language.getInstance().get(key);
+            }
+
             Matcher matcher = PLACEHOLDER_PATTERN.matcher(key);
             while (matcher.find()) amount += 1;
         }
