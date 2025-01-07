@@ -75,10 +75,10 @@ public class ComponentPatches
     /**
      * <h1>OutrageousTranslation</h1>
      * <p>Fixes an exploit caused by a design flaw in the translatable component's placeholder system.</p>
-     * <p>This patch is for 1.19 to 1.20.2.</p>
+     * <p>This patch is for 1.19 to 1.19.3.</p>
      */
     @Mixin(Text.Serializer.class)
-    @PatchMeta(minVersion = 759, maxVersion = 762) // 1.19 to 1.19.4
+    @PatchMeta(minVersion = 759, maxVersion = 761) // 1.19 to 1.19.3
     public static class OutrageousTranslation
     {
         private static final Pattern PLACEHOLDER_PATTERN = Pattern.compile("%([0-9]{1,}\\$)?s");

@@ -64,7 +64,7 @@ public class PatchManager implements IMixinConfigPlugin
             }
 
             // Get the patch
-            final Class<?> patch = Class.forName(mixinClassName);
+            final Class<?> patch = Class.forName(mixinClassName, false, getClass().getClassLoader());
 
             // Enforce the requirement that patches have to have the PatchMeta annotation
             if (!patch.isAnnotationPresent(PatchMeta.class))

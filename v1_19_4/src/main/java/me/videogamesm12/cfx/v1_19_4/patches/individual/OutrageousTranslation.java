@@ -1,4 +1,4 @@
-package me.videogamesm12.cfx.v1_20.patches.individual;
+package me.videogamesm12.cfx.v1_19_4.patches.individual;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
@@ -22,10 +22,10 @@ import java.util.regex.Pattern;
 /**
  * <h1>OutrageousTranslation</h1>
  * <p>Fixes an exploit caused by a design flaw in the translatable component's placeholder system.</p>
- * <p>This patch is for 1.19 to 1.20.2.</p>
+ * <p>This patch is for 1.19.4 to 1.20.2.</p>
  */
 @Mixin(Text.Serializer.class)
-@PatchMeta(minVersion = 763, maxVersion = 764) // 1.20 to 1.20.2
+@PatchMeta(minVersion = 762, maxVersion = 764) // 1.19.4 to 1.20.2
 public class OutrageousTranslation
 {
 	private static final Pattern PLACEHOLDER_PATTERN = Pattern.compile("%([0-9]{1,}\\$)?s");

@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "cfx-v1_19_4",
+  "version": "${version}",
+  "name": "Patches for 1.19.4+ exploits",
+  "description": "CFX patches for exploits starting at 1.19.4.",
+  "authors": [
+    "videogamesm12"
+  ],
+  "contact": {
+    "repo": "https://github.com/VideoGameSmash12/CFX"
+  },
+  "license": "MIT",
+  "icon": "assets/cfx/icon.png",
+  "mixins": [
+    "cfx.v1_19_4.mixins.json"
+  ],
+  "depends": {
+    "minecraft": ">=1.19.4"
+  },
+  "custom": {
+    "modmenu": {
+      "parent": "cfx"
+    }
+  }
+}
