@@ -55,8 +55,8 @@ public class ClickableCommandSign
             // Don't run the command
             case ONLY_NOTIFY:
             {
-                CFX.getLogger().warn("Player " + player.getGameProfile().getName() + " attempted to execute commands in a sign at ("
-                        + pos.toShortString() + "), but was unsuccessful.");
+				CFX.getLogger().warn("Player {} attempted to execute commands in a sign at ({}), but was unsuccessful.",
+                        player.getGameProfile().getName(), pos.toShortString());
             }
             case DO_NOTHING:
             {
@@ -67,8 +67,8 @@ public class ClickableCommandSign
             // Run the command
             case NOTIFY:
             {
-                CFX.getLogger().warn("Player " + player.getGameProfile().getName() + " clicked a sign with commands in it at ("
-                        + pos.toShortString() + ").");
+                CFX.getLogger().warn("Player {} clicked a sign with commands on it at ({}).",
+                        player.getGameProfile().getName(), pos.toShortString());
             }
             case VANILLA:
             {
