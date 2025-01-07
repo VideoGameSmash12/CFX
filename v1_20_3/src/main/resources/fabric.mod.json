@@ -15,7 +15,6 @@
   "entrypoints": {
   },
   "mixins": [
-    "cfx.accessor.mixin.json",
     "cfx.v1_20_3.mixins.json"
   ],
   "depends": {
