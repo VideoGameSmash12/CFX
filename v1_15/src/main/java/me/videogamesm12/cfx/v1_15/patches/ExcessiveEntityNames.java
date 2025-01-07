@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
 /**
- * <h3>ExcessiveEntityNames</h3>
+ * <h1>ExcessiveEntityNames</h1>
  * <p>Mitigates an exploit caused by entities with custom names that are excessively long.</p>
  * <p>This patch is for versions 1.15 to 1.15.2.</p>
  */

@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 /**
- * <h2>BadEntityHoverIdentifier</h2>
+ * <h1>BadEntityHoverIdentifier</h1>
  * <p>Fixes an exploit caused by invalid identifiers in the "show_entity" hover event.</p>
  * <p>This patch is for 1.16 to 1.18.</p>
  */

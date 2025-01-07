@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 /**
- * <h2>NBTSize</h2>
+ * <h1>NBTSize</h1>
  * <p>Patches an exploit caused by a cap in NBT size.</p>
  * <p>This patch is for 1.14 to 1.19.2.</p>
  * <p>This patch does not take effect if you are running DeviousMod.</p>

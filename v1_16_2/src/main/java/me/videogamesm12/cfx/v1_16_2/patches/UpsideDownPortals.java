@@ -34,7 +34,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 /**
- * <h2>UpsideDownPortals</h2>
+ * <h1>UpsideDownPortals</h1>
  * <p>Fixes an exploit caused by an oversight in how the game handles nether portals and dispensers.</p>
  * <p>This patch is for versions 1.16.2 to 1.16.4.</p>
  */

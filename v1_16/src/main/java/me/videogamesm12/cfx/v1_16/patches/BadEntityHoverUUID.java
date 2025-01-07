@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.UUID;
 
 /**
- * <h2>BadEntityHoverUUID</h2>
+ * <h1>BadEntityHoverUUID</h1>
  * <p>Fixes an exploit caused by invalid UUIDs in the "show_entity" hover event.</p>
  * <p>This patch is for 1.16 to 1.18.</p>
  */

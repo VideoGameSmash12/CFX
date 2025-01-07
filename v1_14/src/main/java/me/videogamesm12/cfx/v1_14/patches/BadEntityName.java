@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 
 /**
- * <h2>BadEntityName</h2>
+ * <h1>BadEntityName</h1>
  * <p>Fixes an exploit caused by a lack of JSON validation for entity custom names.</p>
  * <p>This patch is for versions 1.14 to 1.15.2.</p>
  */

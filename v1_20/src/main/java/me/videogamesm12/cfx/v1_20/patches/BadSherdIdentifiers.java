@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 /**
- * <h2>BadSherdIdentifiers</h2>
+ * <h1>BadSherdIdentifiers</h1>
  * <p>Fixes an exploit caused by an oversight in how the game processes Decorated Pots.</p>
  * <p>This patch is for versions 1.20 to 1.20.1.</p>
  */

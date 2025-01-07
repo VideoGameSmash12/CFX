@@ -30,29 +30,26 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-public class NbtPatches
+/**
+ * <h1>NBTSize</h1>
+ * <p>Patches an exploit caused by a cap in NBT size.</p>
+ * <p>This patch is for 1.19.4 - 1.20.1.</p>
+ * <p>This patch does not take effect if you are running DeviousMod.</p>
+ */
+@Mixin(NbtTagSizeTracker.class)
+@PatchMeta(minVersion = 761, maxVersion = 763, conflictingMods = "deviousmod") // 1.19.3 to 1.20.1
+public class NBTSize
 {
-    /**
-     * <h2>NBTSize</h2>
-     * <p>Patches an exploit caused by a cap in NBT size.</p>
-     * <p>This patch is for 1.19.4 - 1.20.1.</p>
-     * <p>This patch does not take effect if you are running DeviousMod.</p>
-     */
-    @Mixin(NbtTagSizeTracker.class)
-    @PatchMeta(minVersion = 761, maxVersion = 763, conflictingMods = "deviousmod") // 1.19.3 to 1.20.1
-    public static class NBTSize
+    @Inject(method = "add",
+            at = @At(value = "INVOKE",
+                    target = "Ljava/lang/RuntimeException;<init>(Ljava/lang/String;)V",
+                    shift = At.Shift.BEFORE),
+            cancellable = true)
+    public void disableNbtSizeRestrictions(long bits, CallbackInfo ci)
     {
-        @Inject(method = "add",
-                at = @At(value = "INVOKE",
-                        target = "Ljava/lang/RuntimeException;<init>(Ljava/lang/String;)V",
-                        shift = At.Shift.BEFORE),
-                cancellable = true)
-        public void disableNbtSizeRestrictions(long bits, CallbackInfo ci)
+        if (!CFX.getConfig().getNbtPatches().isSizeLimitEnabled())
         {
-            if (!CFX.getConfig().getNbtPatches().isSizeLimitEnabled())
-            {
-                ci.cancel();
-            }
+            ci.cancel();
         }
     }
 }

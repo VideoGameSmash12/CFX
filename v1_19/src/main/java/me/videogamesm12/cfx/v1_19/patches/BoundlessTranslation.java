@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 /**
- * <h2>BoundlessTranslation</h2>
+ * <h1>BoundlessTranslation</h1>
  * <p>Fixes an exploit caused by an oversight in the translatable component's placeholder system.</p>
  * <p>This patch is for versions 1.19.1 to 1.19.2.</p>
  */

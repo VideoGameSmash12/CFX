@@ -22,7 +22,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * <h2>OutrageousTranslation</h2>
+ * <h1>OutrageousTranslation</h1>
  * <p>Fixes an exploit caused by a design flaw in the translatable component's placeholder system.</p>
  * <p>This patch is for versions 1.17 to 1.18.2.</p>
  */
