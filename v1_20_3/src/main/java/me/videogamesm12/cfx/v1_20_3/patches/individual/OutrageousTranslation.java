@@ -19,7 +19,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Mixin(TranslatableTextContent.class)
-@PatchMeta(minVersion = 765, maxVersion = 765) // 1.20.3 to 1.20.4
+@PatchMeta(minVersion = 765, maxVersion = 999) // 1.20.3 to Latest
 public class OutrageousTranslation
 {
 	@Shadow @Final private static Pattern ARG_FORMAT;

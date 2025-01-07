@@ -43,7 +43,7 @@ public class CFXConfig
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
     private static final File file = new File(FabricLoader.getInstance().getConfigDir().toFile(), "cfx.json");
 
-    private static final int latestVersion = 9;
+    private static final int latestVersion = 10;
 
     public static CFXConfig load()
     {
@@ -89,6 +89,8 @@ public class CFXConfig
     private Blocks blockPatches = new Blocks();
 
     private Entities entityPatches = new Entities();
+
+    private Libraries libraryPatches = new Libraries();
 
     private NBT nbtPatches = new NBT();
 
@@ -152,6 +154,23 @@ public class CFXConfig
          *  versions patched the exploit.
          */
         private boolean customNameValidationEnabled = true;
+    }
+
+    @Getter
+    public static class Libraries
+    {
+        private AuthLib authLib = new AuthLib();
+
+        @Getter
+        @Setter
+        public static class AuthLib
+        {
+            /**
+             * Validate URLs of player skins before attempting to check whether they are allowed to be used. This does
+             *  not have any effect on versions <= 1.20.2 as those versions are immune to the exploit.
+             */
+            private boolean textureUrlValidationEnabled = true;
+        }
     }
 
     @Getter
