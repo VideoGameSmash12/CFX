@@ -78,7 +78,7 @@ public class ComponentPatches
      * <p>This patch is for 1.19 to 1.20.2.</p>
      */
     @Mixin(Text.Serializer.class)
-    @PatchMeta(minVersion = 759, maxVersion = 764) // 1.19 to 1.20.2
+    @PatchMeta(minVersion = 759, maxVersion = 762) // 1.19 to 1.19.4
     public static class OutrageousTranslation
     {
         private static final Pattern PLACEHOLDER_PATTERN = Pattern.compile("%([0-9]{1,}\\$)?s");

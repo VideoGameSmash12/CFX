@@ -9,8 +9,10 @@
   },
   "mixins": [
     "BlockEntityPatches$BadSherdIdentifiers",
-    "individual.ClickableCommandSign"
+    "individual.ClickableCommandSign",
+    "individual.OutrageousTranslation"
   ],
   "client": [
+    "individual.ExcessiveHearts"
   ]
 }
