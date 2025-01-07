@@ -15,11 +15,7 @@ public class NBTSize
 {
     @Shadow private long allocatedBytes;
 
-    @Inject(method = "add(J)V",
-            at = @At(value = "INVOKE",
-                    target = "Lnet/minecraft/nbt/NbtSizeValidationException;<init>(Ljava/lang/String;)V",
-                    shift = At.Shift.BEFORE),
-            cancellable = true)
+    @Inject(method = "add(J)V", at = @At(value = "HEAD"), cancellable = true)
     public void disableNbtSizeRestrictions(long bytes, CallbackInfo ci)
     {
         if (!CFX.getConfig().getNbtPatches().isSizeLimitEnabled())
