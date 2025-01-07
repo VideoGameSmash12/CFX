@@ -20,9 +20,10 @@
  * OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package me.videogamesm12.cfx.v1_19_3.patches.sensitive;
+package me.videogamesm12.cfx.v1_19_3.patches;
 
 import me.videogamesm12.cfx.CFX;
+import me.videogamesm12.cfx.management.PatchMeta;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.ConfirmScreen;
 import net.minecraft.client.gui.screen.Screen;
@@ -40,6 +41,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
  * <p>This patch is for versions 1.19.3+.</p>
  */
 @Mixin(Screen.class)
+@PatchMeta(minVersion = 761, maxVersion = 999)
 public class ClientClickableCommand
 {
     @Inject(method = "handleTextClick",

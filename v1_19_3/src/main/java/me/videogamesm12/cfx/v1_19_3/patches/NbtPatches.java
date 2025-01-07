@@ -35,7 +35,7 @@ public class NbtPatches
     /**
      * <h2>NBTSize</h2>
      * <p>Patches an exploit caused by a cap in NBT size.</p>
-     * <p>This patch is for 1.20.1+.</p>
+     * <p>This patch is for 1.19.4 - 1.20.1.</p>
      * <p>This patch does not take effect if you are running DeviousMod.</p>
      */
     @Mixin(NbtTagSizeTracker.class)

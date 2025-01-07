@@ -19,11 +19,6 @@
       "minVersion": 760,
       "maxVersion": 760,
       "conflictingMods": []
-    },
-    "me.videogamesm12.cfx.v1_19_3.patches.sensitive.ClientClickableCommand": {
-      "minVersion": 761,
-      "maxVersion": 999,
-      "conflictingMods": []
     }
   }
 }

@@ -16,6 +16,7 @@ public class ExcessiveHearts
 	{
 		if (CFX.getConfig().getRenderPatches().getHud().isAbsorptionHeartCountLimitEnabled())
 		{
+			// Half hearts are counted so we need to multiply it by 2 to get the full heart equivalents
 			return Math.min(absorption, CFX.getConfig().getRenderPatches().getHud()
 					.getMaxAbsorptionHeartsToRender() * 2);
 		}
@@ -28,6 +29,7 @@ public class ExcessiveHearts
 	{
 		if (CFX.getConfig().getRenderPatches().getHud().isHeartCountLimitEnabled())
 		{
+			// Half hearts are counted so we need to multiply it by 2 to get the full heart equivalents
 			return Math.min(maxHearts,
 					CFX.getConfig().getRenderPatches().getHud().getMaxHeartsToRender() * 2);
 		}
