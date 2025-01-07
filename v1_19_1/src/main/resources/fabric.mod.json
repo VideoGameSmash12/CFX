@@ -13,7 +13,7 @@
   "license": "MIT",
   "icon": "assets/cfx/icon.png",
   "mixins": [
-    "cfx.v1_19_1.sensitive.mixins.json"
+    "cfx.v1_19_1.mixins.json"
   ],
   "depends": {
     "minecraft": ">=1.19.1"

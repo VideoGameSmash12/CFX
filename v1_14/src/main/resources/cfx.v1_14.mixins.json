@@ -8,19 +8,20 @@
     "defaultRequire": 1
   },
   "client": [
-    "NetworkPatches$ClientBoundPatches$ExcessiveParticles",
-    "RendererPatches$EntityPatches$ExcessiveEntityNames",
-    "RendererPatches$HudPatches$ExcessiveHearts",
-    "individual.UndersizedHeads"
+    "ClientClickableCommand",
+    "ExcessiveEntityNames",
+    "ExcessiveHearts",
+    "ExcessiveParticles",
+    "UndersizedHeads"
   ],
   "mixins": [
-    "BlockEntityPatches$BadBlockEntityName",
-    "ComponentPatches$BoundlessTranslation",
-    "ComponentPatches$ExtraEmptyArray",
-    "EntityPatches$BadEntityName",
-    "NbtPatches$NBTSize",
-    "individual.CommandSigns",
-    "individual.ComponentDepth",
-    "individual.OutrageousTranslation"
+    "BadBlockEntityName",
+    "BadEntityName",
+    "BoundlessTranslation",
+    "CommandSigns",
+    "ComponentDepth",
+    "ExtraEmptyArray",
+    "NBTSize",
+    "OutrageousTranslation"
   ]
 }

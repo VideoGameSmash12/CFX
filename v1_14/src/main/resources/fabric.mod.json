@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "id": "cfx-v1_14",
   "version": "${version}",
-  "name": "Patches for 1.14.4+ exploits",
-  "description": "CFX patches for exploits starting at 1.14.4.",
+  "name": "Patches for 1.14+ exploits",
+  "description": "CFX patches for exploits starting at 1.14.",
   "authors": [
     "videogamesm12"
   ],
@@ -13,8 +13,7 @@
   "license": "MIT",
   "icon": "assets/cfx/icon.png",
   "mixins": [
-    "cfx.v1_14.mixins.json",
-    "cfx.v1_14.sensitive.mixins.json"
+    "cfx.v1_14.mixins.json"
   ],
   "entrypoints": {
     "cfx": [

@@ -13,8 +13,7 @@
   "license": "MIT",
   "icon": "assets/cfx/icon.png",
   "mixins": [
-    "cfx.v1_16.mixins.json",
-    "cfx.v1_16.sensitive.mixins.json"
+    "cfx.v1_16.mixins.json"
   ],
   "entrypoints": {
     "cfx": [
