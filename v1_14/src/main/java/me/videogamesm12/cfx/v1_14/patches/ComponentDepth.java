@@ -30,6 +30,7 @@ import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
@@ -60,7 +61,22 @@ public class ComponentDepth
         }
     }
 
+    @Inject(method = "deserialize(Lcom/google/gson/JsonElement;Ljava/lang/reflect/Type;Lcom/google/gson/JsonDeserializationContext;)Lnet/minecraft/text/Text;",
+            at = @At(value = "INVOKE",
+                    target = "Lcom/google/gson/JsonElement;getAsJsonObject()Lcom/google/gson/JsonObject;",
+                    shift = At.Shift.AFTER),
+            cancellable = true)
+    public void patchComponentDepthObject(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext, CallbackInfoReturnable<Text> cir)
+    {
+        final JsonObject obj = jsonElement.getAsJsonObject();
 
+        if (CFX.getConfig().getTextPatches().getGeneral().getArrayDepthMode() != CFXConfig.Text.General.ArrayDepthPatchMode.VANILLA)
+        {
+            validateComponentDepth(obj, 0, CFX.getConfig().getTextPatches().getGeneral().getArrayDepthMaximum(), cir);
+        }
+    }
+
+    @Unique
     public void validateComponentDepth(JsonElement e, long depth, long max, CallbackInfoReturnable<Text> cir)
     {
         if (depth > max)
@@ -98,6 +114,7 @@ public class ComponentDepth
         }
     }
 
+    @Unique
     public void validateArrayDepth(final JsonArray array, long depth, long max, CallbackInfoReturnable<Text> cir)
     {
         final long depth2 = depth + 1;

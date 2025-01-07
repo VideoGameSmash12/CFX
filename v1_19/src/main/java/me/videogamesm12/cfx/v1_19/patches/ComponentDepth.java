@@ -29,6 +29,7 @@ import me.videogamesm12.cfx.management.PatchMeta;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
@@ -38,7 +39,7 @@ import java.lang.reflect.Type;
 /**
  * <h1>ComponentDepth</h1>
  * <p>Fixes an exploit caused by a design flaw in the component system.</p>
- * <p>This patch is for versions 1.16 to 1.18.2.</p>
+ * <p>This patch is for versions 1.19 to 1.20.2.</p>
  */
 @Mixin(Text.Serializer.class)
 @PatchMeta(minVersion = 759, maxVersion = 764) // 1.19 to 1.20.2
@@ -59,7 +60,22 @@ public class ComponentDepth
         }
     }
 
+    @Inject(method = "deserialize(Lcom/google/gson/JsonElement;Ljava/lang/reflect/Type;Lcom/google/gson/JsonDeserializationContext;)Lnet/minecraft/text/MutableText;",
+            at = @At(value = "INVOKE",
+                    target = "Lcom/google/gson/JsonElement;getAsJsonObject()Lcom/google/gson/JsonObject;",
+                    shift = At.Shift.AFTER),
+            cancellable = true)
+    public void patchComponentDepthObject(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext, CallbackInfoReturnable<Text> cir)
+    {
+        final JsonObject obj = jsonElement.getAsJsonObject();
 
+        if (CFX.getConfig().getTextPatches().getGeneral().getArrayDepthMode() != CFXConfig.Text.General.ArrayDepthPatchMode.VANILLA)
+        {
+            validateComponentDepth(obj, 0, CFX.getConfig().getTextPatches().getGeneral().getArrayDepthMaximum(), cir);
+        }
+    }
+
+    @Unique
     public void validateComponentDepth(JsonElement e, long depth, long max, CallbackInfoReturnable<Text> cir)
     {
         if (depth > max)
@@ -94,6 +110,7 @@ public class ComponentDepth
         }
     }
 
+    @Unique
     public void validateArrayDepth(final JsonArray array, long depth, long max, CallbackInfoReturnable<Text> cir)
     {
         final long depth2 = depth + 1;

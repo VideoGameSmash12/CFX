@@ -29,6 +29,7 @@ import me.videogamesm12.cfx.management.PatchMeta;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
@@ -49,20 +50,18 @@ public class ComponentDepth
             cancellable = true)
     public void patchComponentDepth(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext, CallbackInfoReturnable<Text> cir)
     {
-        if (!jsonElement.isJsonArray())
+        if (!jsonElement.isJsonArray() || !jsonElement.isJsonObject())
         {
             return;
         }
 
-        final JsonArray array = jsonElement.getAsJsonArray();
-
         if (CFX.getConfig().getTextPatches().getGeneral().getArrayDepthMode() != CFXConfig.Text.General.ArrayDepthPatchMode.VANILLA)
         {
-            validateComponentDepth(array, 0, CFX.getConfig().getTextPatches().getGeneral().getArrayDepthMaximum(), cir);
+            validateComponentDepth(jsonElement, 0, CFX.getConfig().getTextPatches().getGeneral().getArrayDepthMaximum(), cir);
         }
     }
 
-
+    @Unique
     public void validateComponentDepth(JsonElement e, long depth, long max, CallbackInfoReturnable<Text> cir)
     {
         if (depth > max)
@@ -97,6 +96,7 @@ public class ComponentDepth
         }
     }
 
+    @Unique
     public void validateArrayDepth(final JsonArray array, long depth, long max, CallbackInfoReturnable<Text> cir)
     {
         final long depth2 = depth + 1;
