@@ -26,6 +26,7 @@ import com.google.gson.*;
 import me.videogamesm12.cfx.CFX;
 import me.videogamesm12.cfx.config.CFXConfig;
 import me.videogamesm12.cfx.management.PatchMeta;
+import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import org.spongepowered.asm.mixin.Mixin;
@@ -41,14 +42,14 @@ import java.lang.reflect.Type;
  * <p>Fixes an exploit caused by a design flaw in the component system.</p>
  * <p>This patch is for versions 1.20.3+.</p>
  */
-@Mixin(Text.Serializer.class)
+@Mixin(Text.Serialization.class)
 @PatchMeta(minVersion = 765, maxVersion = 999) // 1.20.3 to Latest
 public class ComponentDepth
 {
-    @Inject(method = "deserialize(Lcom/google/gson/JsonElement;Ljava/lang/reflect/Type;Lcom/google/gson/JsonDeserializationContext;)Lnet/minecraft/text/MutableText;",
+    @Inject(method = "fromJson(Lcom/google/gson/JsonElement;)Lnet/minecraft/text/MutableText;",
             at = @At("HEAD"),
             cancellable = true)
-    public void patchComponentDepth(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext, CallbackInfoReturnable<Text> cir)
+    private static void patchComponentDepth(JsonElement jsonElement, CallbackInfoReturnable<MutableText> cir)
     {
         if (!jsonElement.isJsonArray() || !jsonElement.isJsonObject())
         {
@@ -62,7 +63,7 @@ public class ComponentDepth
     }
 
     @Unique
-    public void validateComponentDepth(JsonElement e, long depth, long max, CallbackInfoReturnable<Text> cir)
+    private static void validateComponentDepth(JsonElement e, long depth, long max, CallbackInfoReturnable<MutableText> cir)
     {
         if (depth > max)
         {
@@ -97,7 +98,7 @@ public class ComponentDepth
     }
 
     @Unique
-    public void validateArrayDepth(final JsonArray array, long depth, long max, CallbackInfoReturnable<Text> cir)
+    private static void validateArrayDepth(final JsonArray array, long depth, long max, CallbackInfoReturnable<MutableText> cir)
     {
         final long depth2 = depth + 1;
 
