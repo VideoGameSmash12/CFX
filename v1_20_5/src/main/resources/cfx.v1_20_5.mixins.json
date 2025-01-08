@@ -9,5 +9,8 @@
   },
   "client": [
     "ExcessiveEntityNames"
+  ],
+  "mixins": [
+    "ComponentDepth"
   ]
 }

@@ -20,12 +20,16 @@
  * OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package me.videogamesm12.cfx.v1_20_3.patches;
+package me.videogamesm12.cfx.v1_20_5.patches;
 
-import com.google.gson.*;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
 import me.videogamesm12.cfx.CFX;
 import me.videogamesm12.cfx.config.CFXConfig;
 import me.videogamesm12.cfx.management.PatchMeta;
+import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
@@ -35,21 +39,19 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import java.lang.reflect.Type;
-
 /**
  * <h1>ComponentDepth</h1>
  * <p>Fixes an exploit caused by a design flaw in the component system.</p>
- * <p>This patch is for versions 1.20.3 - 1.20.4.</p>
+ * <p>This patch is for versions 1.20.5+.</p>
  */
 @Mixin(Text.Serialization.class)
-@PatchMeta(minVersion = 765, maxVersion = 765) // 1.20.3 to 1.20.4
+@PatchMeta(minVersion = 766, maxVersion = 999) // 1.20.5 to Latest
 public class ComponentDepth
 {
-    @Inject(method = "fromJson(Lcom/google/gson/JsonElement;)Lnet/minecraft/text/MutableText;",
+    @Inject(method = "fromJson(Lcom/google/gson/JsonElement;Lnet/minecraft/registry/RegistryWrapper$WrapperLookup;)Lnet/minecraft/text/MutableText;",
             at = @At("HEAD"),
             cancellable = true)
-    private static void patchComponentDepth(JsonElement jsonElement, CallbackInfoReturnable<MutableText> cir)
+    private static void patchComponentDepth(JsonElement jsonElement, RegistryWrapper.WrapperLookup registries, CallbackInfoReturnable<MutableText> cir)
     {
         if (!jsonElement.isJsonArray() || !jsonElement.isJsonObject())
         {
