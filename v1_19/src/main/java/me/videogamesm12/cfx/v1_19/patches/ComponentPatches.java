@@ -48,31 +48,6 @@ import java.util.regex.Pattern;
 public class ComponentPatches
 {
     /**
-     * <h2>BoundlessTranslation</h2>
-     * <p>Fixes an exploit caused by an oversight in the translatable component's placeholder system.</p>
-     * <p>This patch is for versions 1.19.1 to 1.19.2.</p>
-     */
-    @Mixin(TranslatableTextContent.class)
-    @PatchMeta(minVersion = 759, maxVersion = 760) // 1.19.1 to 1.19.2
-    public static class BoundlessTranslation
-    {
-        @Shadow
-        @Final
-        private static StringVisitable NULL_ARGUMENT;
-
-        @Inject(method = "getArg",
-                at = @At("HEAD"),
-                cancellable = true)
-        public void fixCrashExploit(int index, CallbackInfoReturnable<StringVisitable> cir)
-        {
-            if (CFX.getConfig().getTextPatches().getTranslation().isBoundaryPatchEnabled() && index < 0)
-            {
-                cir.setReturnValue(NULL_ARGUMENT);
-            }
-        }
-    }
-
-    /**
      * <h1>OutrageousTranslation</h1>
      * <p>Fixes an exploit caused by a design flaw in the translatable component's placeholder system.</p>
      * <p>This patch is for 1.19 to 1.19.3.</p>

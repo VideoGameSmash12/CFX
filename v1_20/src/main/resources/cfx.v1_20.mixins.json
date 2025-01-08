@@ -8,10 +8,10 @@
     "defaultRequire": 1
   },
   "mixins": [
-    "BlockEntityPatches$BadSherdIdentifiers",
-    "individual.ClickableCommandSign"
+    "BadSherdIdentifiers",
+    "ClickableCommandSign"
   ],
   "client": [
-    "individual.ExcessiveHearts"
+    "ExcessiveHearts"
   ]
 }

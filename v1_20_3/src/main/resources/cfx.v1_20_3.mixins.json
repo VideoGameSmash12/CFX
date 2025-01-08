@@ -8,10 +8,10 @@
     "defaultRequire": 1
   },
   "mixins": [
-    "individual.ClickableCommandSign",
-    "individual.ComponentDepth",
-    "individual.InvalidHeadURL",
-    "individual.OutrageousTranslation"
+    "ClickableCommandSign",
+    "ComponentDepth",
+    "InvalidHeadURL",
+    "OutrageousTranslation"
   ],
   "client": [
   ]

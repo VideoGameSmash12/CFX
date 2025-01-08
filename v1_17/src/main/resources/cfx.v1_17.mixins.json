@@ -7,10 +7,8 @@
   "injectors": {
     "defaultRequire": 1
   },
-  "client": [
-  ],
   "mixins": [
-    "ComponentPatches$OutrageousTranslation",
-    "individual.CommandSigns"
+    "OutrageousTranslation",
+    "CommandSigns"
   ]
 }

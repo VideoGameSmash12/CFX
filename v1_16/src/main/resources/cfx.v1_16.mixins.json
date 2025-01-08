@@ -8,17 +8,18 @@
     "defaultRequire": 1
   },
   "client": [
-    "RendererPatches$EntityPatches$ExcessiveEntityNames",
-    "RendererPatches$HudPatches$ExcessiveHearts"
+    "ClientClickableCommand",
+    "ExcessiveEntityNames",
+    "ExcessiveHearts"
   ],
   "mixins": [
-    "BlockEntityPatches$BadBlockEntityName",
-    "ComponentPatches$BadEntityHoverIdentifier",
-    "ComponentPatches$BadEntityHoverUUID",
-    "ComponentPatches$BadItemHoverIdentifier",
-    "ComponentPatches$BoundlessTranslation",
-    "ComponentPatches$ExtraEmptyArray",
-    "individual.ComponentDepth",
-    "individual.OutrageousTranslation"
+    "BadBlockEntityName",
+    "BadEntityHoverIdentifier",
+    "BadEntityHoverUUID",
+    "BadItemHoverIdentifier",
+    "BoundlessTranslation",
+    "ComponentDepth",
+    "ExtraEmptyArray",
+    "OutrageousTranslation"
   ]
 }

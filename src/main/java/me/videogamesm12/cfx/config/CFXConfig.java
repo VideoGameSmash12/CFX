@@ -43,7 +43,7 @@ public class CFXConfig
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
     private static final File file = new File(FabricLoader.getInstance().getConfigDir().toFile(), "cfx.json");
 
-    private static final int latestVersion = 10;
+    private static final int latestVersion = 11;
 
     public static CFXConfig load()
     {
@@ -209,13 +209,6 @@ public class CFXConfig
     public static class Overrides
     {
         /**
-         * Allow patches that affect very sensitive parts of the game. Sensitive patches are initialized in a different
-         *  way from traditional patches in order to reduce the amount of mod conflicts that may occur due to how the
-         *  mod actually pulls metadata for the patches.
-         */
-        private boolean sensitivePatchesAllowed = true;
-
-        /**
          * Class names for patches that shouldn't be applied even if they are compatible with the current version of
          *  Minecraft that is running. This is helpful for cases where it's causing conflicts with other mods but the
          *  maintainer of the mod isn't aware of the issue yet.
@@ -236,15 +229,6 @@ public class CFXConfig
          */
         @Getter
         private boolean clientCommandEnabled = true;
-
-        /**
-         * Returns whether to allow sensitive patches to be applied
-         * @return The value of sensitivePatchesAllowed
-         */
-        public boolean areSensitivePatchesAllowed()
-        {
-            return sensitivePatchesAllowed;
-        }
     }
 
     @Getter

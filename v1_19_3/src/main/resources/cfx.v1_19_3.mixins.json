@@ -11,6 +11,6 @@
     "ClientClickableCommand"
   ],
   "mixins": [
-    "NbtPatches$NBTSize"
+    "NBTSize"
   ]
 }
