@@ -1,7 +1,12 @@
 {
   "cfx.command.reload.success": "Successfully reloaded CFX's configuration",
-  
+
+  "cfx.error.not_executing_as_sign_changed": "Sign data changed since original prompt, command execution aborted",
+  "cfx.error.not_executing_as_player_direction_changed": "Player is no longer facing the right way since original prompt, command execution aborted",
+  "cfx.error.not_executing_as_sign_broke": "Sign was broken or replaced with different type since original prompt, command execution aborted",
+
   "cfx.prompt.run_command": "Are you sure you want to run this command?",
+  "cfx.prompt.run_commands": "Are you sure you want to run these commands?",
 
   "cfx.replacement.too_complex": "*** Component is too complex ***",
   "cfx.replacement.too_many_placeholders": "*** Component has too many placeholders ***"

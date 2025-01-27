@@ -40,7 +40,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
  */
 @Mixin(SignBlockEntity.class)
 @PatchMeta(minVersion = 763, maxVersion = 764) // 1.20 to 1.20.2
-public class ClickableCommandSign
+public class CommandSigns
 {
     @Inject(method = "runCommandClickEvent",
             at = @At(value = "INVOKE",
