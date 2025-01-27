@@ -9,6 +9,7 @@
   },
   "client": [
     "ClientClickableCommand",
+    "CommandSignsTwo",
     "ExcessiveEntityNames",
     "ExcessiveHearts",
     "ExcessiveParticles",

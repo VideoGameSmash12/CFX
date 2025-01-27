@@ -9,6 +9,7 @@
   },
   "client": [
     "ClientClickableCommand",
+    "CommandSignsTwo",
     "ExcessiveEntityNames",
     "ExcessiveHearts"
   ],
@@ -20,6 +21,7 @@
     "BoundlessTranslation",
     "ComponentDepth",
     "ExtraEmptyArray",
-    "OutrageousTranslation"
+    "OutrageousTranslation",
+    "SignBlockEntityAccessor"
   ]
 }

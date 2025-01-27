@@ -9,9 +9,10 @@
   },
   "mixins": [
     "BadSherdIdentifiers",
-    "ClickableCommandSign"
+    "CommandSigns"
   ],
   "client": [
+    "CommandSignsTwo",
     "ExcessiveHearts"
   ]
 }
